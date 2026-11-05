@@ -1,0 +1,105 @@
+@prefix emp: <https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad>
+    a owl:Ontology ;
+    rdfs:label "Ontología de empleabilidad"@es ;
+    rdfs:comment "Vocabulario para representar perfiles profesionales, ofertas laborales y recomendaciones de empleabilidad."@es ;
+    owl:versionIRI <https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad/1.0.0> ;
+    owl:versionInfo "1.0.0" .
+
+emp:Candidato
+    a owl:Class ;
+    rdfs:label "Candidato"@es ;
+    rdfs:comment "Persona cuyo perfil profesional se representa."@es .
+
+emp:Competencia
+    a owl:Class ;
+    rdfs:label "Competencia"@es ;
+    rdfs:comment "Capacidad o dominio requerido o atribuido a un candidato."@es .
+
+emp:HabilidadSuave
+    a owl:Class ;
+    rdfs:label "Habilidad suave"@es ;
+    rdfs:comment "Capacidad no técnica relevante para el desempeño profesional."@es .
+
+emp:RankingDeCompetencia
+    a owl:Class ;
+    rdfs:label "Ranking de competencia"@es ;
+    rdfs:comment "Evaluación ordinal o puntuación de una competencia, con escala y procedencia."@es .
+
+emp:Educacion
+    a owl:Class ;
+    rdfs:label "Educación"@es ;
+    rdfs:comment "Formación académica o profesional de un candidato."@es .
+
+emp:ExperienciaLaboral
+    a owl:Class ;
+    rdfs:label "Experiencia laboral"@es ;
+    rdfs:comment "Relación o periodo de trabajo con funciones y fechas asociadas."@es .
+
+emp:Habilidad
+    a owl:Class ;
+    rdfs:label "Habilidad"@es ;
+    rdfs:comment "Capacidad práctica o técnica que puede relacionarse con una competencia."@es .
+
+emp:Lenguaje
+    a owl:Class ;
+    rdfs:label "Lenguaje"@es ;
+    rdfs:comment "Idioma que domina o requiere un nivel explícito."@es .
+
+emp:PerfilSocioemocional
+    a owl:Class ;
+    rdfs:label "Perfil socioemocional"@es ;
+    rdfs:comment "Conjunto opcional y contextualizado de evaluaciones socioemocionales; no representa atributos protegidos."@es .
+
+emp:FactorSocioemocional
+    a owl:Class ;
+    rdfs:label "Factor socioemocional"@es ;
+    rdfs:comment "Factor evaluado dentro de un perfil socioemocional."@es .
+
+emp:RedSocial
+    a owl:Class ;
+    rdfs:label "Red social profesional"@es ;
+    rdfs:comment "Persona o grupo de contacto profesional conocido por el candidato, no una plataforma electrónica."@es .
+
+emp:RecursoSocial
+    a owl:Class ;
+    rdfs:label "Recurso social"@es ;
+    rdfs:comment "Recurso de empleabilidad o habilidad suave accesible mediante una conexión profesional."@es .
+
+emp:OfertaLaboral
+    a owl:Class ;
+    rdfs:label "Oferta laboral"@es ;
+    rdfs:comment "Vacante publicada con ubicación, fechas, modalidad y condiciones disponibles."@es .
+
+emp:Empleador
+    a owl:Class ;
+    rdfs:label "Empleador"@es ;
+    rdfs:comment "Organización o entidad que publica o gestiona una oferta laboral."@es .
+
+emp:RequerimientoDeCompetencia
+    a owl:Class ;
+    rdfs:label "Requerimiento de competencia"@es ;
+    rdfs:comment "Requisito de competencia asociado a una oferta laboral."@es .
+
+emp:TrayectoriaLaboral
+    a owl:Class ;
+    rdfs:label "Trayectoria laboral"@es ;
+    rdfs:comment "Secuencia o agrupación de etapas profesionales de un candidato."@es .
+
+emp:EtapaEnTrayectoriaLaboral
+    a owl:Class ;
+    rdfs:label "Etapa en trayectoria laboral"@es ;
+    rdfs:comment "Etapa que ordena y contextualiza un periodo de la trayectoria."@es .
+
+emp:Recomendacion
+    a owl:Class ;
+    rdfs:label "Recomendación"@es ;
+    rdfs:comment "Resultado que sugiere una oferta, candidato, acción u oportunidad."@es .
+
+emp:Explicacion
+    a owl:Class ;
+    rdfs:label "Explicación"@es ;
+    rdfs:comment "Justificación trazable de una recomendación, con evidencia y método cuando estén disponibles."@es .

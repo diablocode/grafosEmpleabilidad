@@ -57,10 +57,10 @@ La ontología debe incluir, como mínimo, las siguientes clases. Los nombres se 
 | `ExperienciaLaboral`         | Relación o periodo de trabajo con funciones y fechas asociadas.                                                                      |
 | `Habilidad`                  | Capacidad práctica o técnica; puede relacionarse con una competencia.                                                                |
 | `Lenguaje`                   | Idioma que domina el candidato, es una competencia, con nivel y escala explícitos.                                                   |
-| `PerfilSocioemocional`       | Conjunto contextualizado de evaluaciones socioemocionales; categoría de datos sensibles. Pueden incluir genero, raza, religion, etc. |
+| `PerfilSocioemocional`       | Conjunto contextualizado y opcional de evaluaciones socioemocionales; dato sensible sujeto a controles de privacidad. No incluye atributos protegidos como género, origen étnico o religión. |
 | `FactorSocioemocional`       | Factor evaluado dentro de un perfil socioemocional.                                                                                  |
-| `RedSocial`                  | Persona o grupo de contacto conocida por el candidato y de relevancia para alguna vacante.                                           |
-| `RecursoSocial`              | Habilidad suave obtenida gracias a una red social, es una competencia.                                                               |
+| `RedSocial`                  | Persona o grupo de contacto conocido por el candidato y de relevancia profesional; no es una plataforma electrónica.                 |
+| `RecursoSocial`              | Habilidad suave o recurso de empleabilidad al que el candidato accede mediante una conexión profesional.                             |
 | `OfertaLaboral`              | Vacante publicada con ubicación, fechas, modalidad y condiciones disponibles.                                                        |
 | `Empleador`                  | Organización o entidad que publica o gestiona una oferta.                                                                            |
 | `RequerimientoDeCompetencia` | Requisito de competencia asociado a una oferta, con nivel esperado y obligatoriedad si se conoce.                                    |
@@ -86,7 +86,8 @@ La ontología debe contemplar relaciones con semántica y dominio/rango document
 | evalúa competencia               | RankingDeCompetencia → Competencia | Competencia a la que corresponde la evaluación.         |
 | tiene factor                     | PerfilSocioemocional → FactorSocioemocional | Factor incluido en el perfil.                           |
 | tiene perfil socioemocional      | Candidato → PerfilSocioemocional | Asociación cuyo uso requiere controles de privacidad.   |
-| conoce a red social              | RecursoSocial → RedSocial | Persona o grupo con el que el candidato esta conectado. |
+| conoce a red social              | Candidato → RedSocial | Persona o grupo de contacto profesional conocido por el candidato. |
+| facilita recurso social          | RedSocial → RecursoSocial | Recurso o habilidad suave al que se accede mediante la conexión. |
 | publicado por                    | OfertaLaboral → Empleador | Organización asociada a la publicación.                 |
 | requiere competencia             | OfertaLaboral → RequerimientoDeCompetencia | Requisitos declarados para la oferta.                   |
 | especifica competencia           | RequerimientoDeCompetencia → Competencia | Competencia requerida.                                  |
@@ -172,8 +173,10 @@ Se eligen opciones sencillas y ampliamente utilizadas como punto de partida. Las
 
 ### 15.1 IRI base y versionado
 
-- Usar un espacio de nombres persistente bajo un dominio controlado por el proyecto o la institución: `https://<dominio-controlado>/ontologia/empleabilidad#`.
-- Mantener estable el IRI base de clases y propiedades; registrar la versión publicada como metadato de la ontología y en control de versiones del proyecto.
+- Usar durante el desarrollo el espacio de nombres local `https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#`. Este IRI depende del entorno local y no es publicable ni interoperable fuera de él; antes de una publicación deberá sustituirse por un IRI persistente bajo un dominio controlado y migrarse de forma coordinada.
+- Mantener estable el IRI base de clases y propiedades. Identificar cada publicación con una versión semántica (`MAJOR.MINOR.PATCH`) registrada con `owl:versionInfo` y una etiqueta Git.
+- Usar el prefijo `emp` para el espacio de nombres propio y documentar los prefijos estándar `rdf`, `rdfs`, `owl`, `xsd`, `skos`, `prov` y `schema` cuando se utilicen.
+- Nombrar clases en `UpperCamelCase` y propiedades en `lowerCamelCase`; usar etiquetas en español (`rdfs:label` con idioma `es`) para los términos legibles.
 - No publicar la ontología con un IRI local, temporal o basado en datos personales.
 
 ### 15.2 Escalas y fuentes autorizadas
@@ -198,7 +201,7 @@ Se eligen opciones sencillas y ampliamente utilizadas como punto de partida. Las
 
 - Usar UUID o identificadores opacos para candidatos; no incluir nombres, correos ni otros datos personales en los IRI.
 - Minimizar los datos personales y separar los identificadores directos del grafo de análisis cuando sea posible.
-- Tratar perfiles socioemocionales y recursos de redes sociales como opcionales y sensibles, conservando fuente y contexto y limitando su acceso.
+- Tratar perfiles socioemocionales y datos sobre conexiones profesionales como opcionales y sensibles, conservando fuente y contexto y limitando su acceso. No incluir atributos protegidos como género, origen étnico o religión en el perfil socioemocional.
 - Definir propósito, consentimiento o base legítima, retención y eliminación conforme a las políticas institucionales y la normativa aplicable antes de incorporar datos reales.
 - Aplicar permisos en la aplicación o infraestructura; la ontología no reemplaza los controles de acceso.
 

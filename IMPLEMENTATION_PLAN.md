@@ -21,7 +21,7 @@ Construir la ontología y su integración con Apache Jena en capas pequeñas, ve
 
 **Actividades**
 
-- Usar como IRI base previsto `https://localhost:3030/<propietario>/<repositorio>/ontology/empleabilidad#`; confirmar propietario, nombre y URL cuando se cree el repositorio. El marcador no es publicable y no deben crearse recursos RDF hasta reemplazarlo.
+- Usar durante el desarrollo `https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#`. Es un IRI local no publicable; antes de distribuir la ontología se debe acordar un dominio persistente y migrar coordinadamente los identificadores.
 - Usar el IRI base estable de clases y propiedades; registrar cada publicación con versión semántica (`MAJOR.MINOR.PATCH`) en `owl:versionInfo` y en una etiqueta Git.
 - Usar el prefijo propio `emp` y documentar `rdf`, `rdfs`, `owl`, `xsd`, `skos`, `prov` y `schema` cuando se utilicen.
 - Nombrar clases en `UpperCamelCase`, propiedades en `lowerCamelCase` y usar etiquetas en español con idioma `es`.
@@ -30,7 +30,7 @@ Construir la ontología y su integración con Apache Jena en capas pequeñas, ve
 
 **Validación de salida**
 
-- [X] IRI base definitivo confirmado..
+- [x] IRI base local confirmado para desarrollo; queda pendiente acordar un IRI persistente antes de publicar.
 - [x] Prefijos, estrategia de versión y convención de nombres documentados.
 - [x] Alcance de redes personales y datos socioemocionales documentado en el PRD.
 - [x] Se acordó que los fixtures usarán exclusivamente datos sintéticos, sin información personal real.
@@ -49,12 +49,12 @@ Construir la ontología y su integración con Apache Jena en capas pequeñas, ve
 
 **Validación de salida**
 
-- [ ] Apache Jena carga y parsea la ontología Turtle sin errores.
-- [ ] Las 19 clases mínimas tienen IRI único, tipo OWL y etiqueta legible.
-- [ ] Se comprueba que no haya clases de postulaciones.
-- [ ] La versión y el IRI de ontología corresponden a las decisiones de la Capa 0.
+- [x] Apache Jena carga y parsea la ontología Turtle sin errores.
+- [x] Las 19 clases mínimas tienen IRI único, tipo OWL y etiqueta legible.
+- [x] Se comprueba que no haya clases de postulaciones.
+- [x] La versión y el IRI de ontología corresponden a las decisiones de la Capa 0.
 
-**Punto de revisión:** revisar nombres, etiquetas y jerarquías antes de fijar propiedades.
+**Punto de revisión:** nombres y etiquetas en español validados; no se añadieron jerarquías ni restricciones no acordadas. Revisar cambios de vocabulario antes de fijar propiedades en la Capa 2.
 
 ### Capa 2 — Propiedades y relaciones del dominio
 
