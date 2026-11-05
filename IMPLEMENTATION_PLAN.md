@@ -21,18 +21,19 @@ Construir la ontología y su integración con Apache Jena en capas pequeñas, ve
 
 **Actividades**
 
-- Confirmar el IRI base definitivo y quién controla el dominio. El valor de ejemplo del PRD es un marcador y no debe usarse como identificador de producción.
-- Definir el IRI de la ontología, el mecanismo de versión y los prefijos.
-- Confirmar las etiquetas en español y la convención de nombres para clases y propiedades.
-- Confirmar el alcance de `RedSocial` y `RecursoSocial` como relaciones y recursos de redes personales, no plataformas electrónicas.
-- Documentar el tratamiento opcional y sensible de datos socioemocionales.
+- Usar como IRI base previsto `https://localhost:3030/<propietario>/<repositorio>/ontology/empleabilidad#`; confirmar propietario, nombre y URL cuando se cree el repositorio. El marcador no es publicable y no deben crearse recursos RDF hasta reemplazarlo.
+- Usar el IRI base estable de clases y propiedades; registrar cada publicación con versión semántica (`MAJOR.MINOR.PATCH`) en `owl:versionInfo` y en una etiqueta Git.
+- Usar el prefijo propio `emp` y documentar `rdf`, `rdfs`, `owl`, `xsd`, `skos`, `prov` y `schema` cuando se utilicen.
+- Nombrar clases en `UpperCamelCase`, propiedades en `lowerCamelCase` y usar etiquetas en español con idioma `es`.
+- Definir `RedSocial` como persona o grupo de contacto profesional (no una plataforma electrónica) y `RecursoSocial` como recurso o habilidad suave accesible mediante esa conexión.
+- Tratar perfiles socioemocionales y datos de conexiones profesionales como opcionales y sensibles; no incluir atributos protegidos en el perfil socioemocional. Usar solo datos sintéticos en fixtures y exigir que propósito, fuente, acceso y base legítima estén definidos antes de usar datos reales.
 
 **Validación de salida**
 
-- [ ] IRI base decidido, estable y bajo control del proyecto.
-- [ ] Prefijos, estrategia de versión y convención de nombres documentados.
-- [ ] Alcance de redes personales y datos socioemocionales entendido y acordado.
-- [ ] Ningún dato personal real se usa en los fixtures.
+- [X] IRI base definitivo confirmado..
+- [x] Prefijos, estrategia de versión y convención de nombres documentados.
+- [x] Alcance de redes personales y datos socioemocionales documentado en el PRD.
+- [x] Se acordó que los fixtures usarán exclusivamente datos sintéticos, sin información personal real.
 
 **Punto de revisión:** aprobar las decisiones antes de crear identificadores persistentes.
 
