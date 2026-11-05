@@ -21,3 +21,15 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
 }
+
+tasks.register<JavaExec>("generateOntologyRdfXml") {
+    group = "ontology"
+    description = "Generates the RDF/XML ontology from its Turtle source."
+    dependsOn(tasks.named("classes"))
+    classpath = sourceSets.main.get().runtimeClasspath
+    mainClass.set("mx.udg.cucea.ontology.OntologyRdfXmlGenerator")
+    args(
+        "src/main/resources/ontology/empleabilidad.ttl",
+        "src/main/resources/ontology/empleabilidad.rdf",
+    )
+}

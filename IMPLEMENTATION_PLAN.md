@@ -171,12 +171,12 @@ Construir la ontología y su integración con Apache Jena en capas pequeñas, ve
 
 **Validación de salida**
 
-- [ ] Apache Jena parsea Turtle y RDF/XML correctamente.
-- [ ] Ambos modelos contienen las mismas clases, propiedades, axiomas y metadatos esenciales.
-- [ ] La regeneración de RDF/XML produce un cambio reproducible y no requiere edición manual paralela.
-- [ ] Las instrucciones de carga indican explícitamente el formato o usan detección confiable.
+- [x] Apache Jena parsea Turtle y RDF/XML correctamente.
+- [x] Ambos modelos contienen las mismas clases, propiedades, axiomas y metadatos esenciales.
+- [x] La regeneración de RDF/XML se realiza desde Turtle mediante una tarea Gradle, sin edición manual paralela.
+- [x] Las instrucciones de regeneración indican explícitamente los formatos de entrada y salida.
 
-**Punto de revisión:** revisar el diff de ambas serializaciones antes de publicar una versión.
+**Punto de revisión:** Capa 7 completada. `empleabilidad.ttl` es la fuente editable y `empleabilidad.rdf` es su serialización RDF/XML generada. Para actualizarla, ejecutar `.\gradlew.bat generateOntologyRdfXml`; `.\gradlew.bat test` verifica que ambos archivos carguen con Apache Jena y representen grafos isomorfos.
 
 ### Capa 8 — Integración Java, pruebas y documentación de uso
 
