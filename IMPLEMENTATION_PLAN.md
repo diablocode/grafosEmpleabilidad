@@ -70,12 +70,12 @@ Construir la ontología y su integración con Apache Jena en capas pequeñas, ve
 
 **Validación de salida**
 
-- [ ] Cada relación mínima del PRD tiene una propiedad identificable, etiqueta, descripción, dominio y rango documentados.
-- [ ] Las propiedades de datos usan tipos RDF adecuados y distinguen fechas, texto, identificadores y puntuaciones.
-- [ ] Un grafo de prueba pequeño se carga en Jena y permite recorrer cada relación principal.
-- [ ] No se incorporan relaciones de postulación ni axiomas que interpreten ausencia de datos como falsedad.
+- [x] Cada relación mínima del PRD tiene una propiedad identificable, etiqueta, descripción, dominio y rango documentados.
+- [x] Las propiedades de datos usan tipos RDF adecuados y distinguen fechas, texto, identificadores y puntuaciones.
+- [x] Un grafo de prueba pequeño se carga en Jena y permite recorrer relaciones principales de perfiles, ofertas y recomendaciones.
+- [x] No se incorporan relaciones de postulación ni axiomas que interpreten ausencia de datos como falsedad.
 
-**Punto de revisión:** validar dominio y rango con ejemplos antes de añadir escalas y restricciones.
+**Punto de revisión:** propiedades y dominios/rangos verificados con Apache Jena. Revisar la terminología del vocabulario antes de comenzar la Capa 3.
 
 ### Capa 3 — Escalas y catálogos controlados
 

@@ -103,3 +103,304 @@ emp:Explicacion
     a owl:Class ;
     rdfs:label "Explicación"@es ;
     rdfs:comment "Justificación trazable de una recomendación, con evidencia y método cuando estén disponibles."@es .
+
+emp:tieneEducacion
+    a owl:ObjectProperty ;
+    rdfs:label "tiene educación"@es ;
+    rdfs:comment "Relaciona un candidato con su formación académica o profesional."@es ;
+    rdfs:domain emp:Candidato ;
+    rdfs:range emp:Educacion .
+
+emp:tieneExperienciaLaboral
+    a owl:ObjectProperty ;
+    rdfs:label "tiene experiencia laboral"@es ;
+    rdfs:comment "Relaciona un candidato con una experiencia laboral registrada."@es ;
+    rdfs:domain emp:Candidato ;
+    rdfs:range emp:ExperienciaLaboral .
+
+emp:poseeCompetencia
+    a owl:ObjectProperty ;
+    rdfs:label "posee competencia"@es ;
+    rdfs:comment "Relaciona un candidato con una competencia declarada o evaluada."@es ;
+    rdfs:domain emp:Candidato ;
+    rdfs:range emp:Competencia .
+
+emp:tieneHabilidad
+    a owl:ObjectProperty ;
+    rdfs:label "tiene habilidad"@es ;
+    rdfs:comment "Relaciona un candidato con una habilidad práctica o técnica."@es ;
+    rdfs:domain emp:Candidato ;
+    rdfs:range emp:Habilidad .
+
+emp:tieneHabilidadSuave
+    a owl:ObjectProperty ;
+    rdfs:label "tiene habilidad suave"@es ;
+    rdfs:comment "Relaciona un candidato con una habilidad no técnica."@es ;
+    rdfs:domain emp:Candidato ;
+    rdfs:range emp:HabilidadSuave .
+
+emp:dominaLenguaje
+    a owl:ObjectProperty ;
+    rdfs:label "domina lenguaje"@es ;
+    rdfs:comment "Relaciona un candidato con un idioma que domina en el nivel indicado."@es ;
+    rdfs:domain emp:Candidato ;
+    rdfs:range emp:Lenguaje .
+
+emp:tieneRanking
+    a owl:ObjectProperty ;
+    rdfs:label "tiene ranking"@es ;
+    rdfs:comment "Relaciona un candidato con una evaluación de competencia."@es ;
+    rdfs:domain emp:Candidato ;
+    rdfs:range emp:RankingDeCompetencia .
+
+emp:evaluaCompetencia
+    a owl:ObjectProperty ;
+    rdfs:label "evalúa competencia"@es ;
+    rdfs:comment "Indica qué competencia se evalúa en un ranking."@es ;
+    rdfs:domain emp:RankingDeCompetencia ;
+    rdfs:range emp:Competencia .
+
+emp:tienePerfilSocioemocional
+    a owl:ObjectProperty ;
+    rdfs:label "tiene perfil socioemocional"@es ;
+    rdfs:comment "Vincula opcionalmente un candidato con su perfil socioemocional contextualizado."@es ;
+    rdfs:domain emp:Candidato ;
+    rdfs:range emp:PerfilSocioemocional .
+
+emp:tieneFactorSocioemocional
+    a owl:ObjectProperty ;
+    rdfs:label "tiene factor socioemocional"@es ;
+    rdfs:comment "Relaciona un perfil socioemocional con un factor evaluado."@es ;
+    rdfs:domain emp:PerfilSocioemocional ;
+    rdfs:range emp:FactorSocioemocional .
+
+emp:conoceA
+    a owl:ObjectProperty ;
+    rdfs:label "conoce a"@es ;
+    rdfs:comment "Relaciona un candidato con una persona o grupo de contacto profesional."@es ;
+    rdfs:domain emp:Candidato ;
+    rdfs:range emp:RedSocial .
+
+emp:facilitaRecursoSocial
+    a owl:ObjectProperty ;
+    rdfs:label "facilita recurso social"@es ;
+    rdfs:comment "Relaciona un contacto profesional con un recurso de empleabilidad accesible mediante esa conexión."@es ;
+    rdfs:domain emp:RedSocial ;
+    rdfs:range emp:RecursoSocial .
+
+emp:publicadoPor
+    a owl:ObjectProperty ;
+    rdfs:label "publicado por"@es ;
+    rdfs:comment "Indica la organización o entidad que publica o gestiona una oferta."@es ;
+    rdfs:domain emp:OfertaLaboral ;
+    rdfs:range emp:Empleador .
+
+emp:requiereCompetencia
+    a owl:ObjectProperty ;
+    rdfs:label "requiere competencia"@es ;
+    rdfs:comment "Vincula una oferta laboral con uno de sus requerimientos de competencia."@es ;
+    rdfs:domain emp:OfertaLaboral ;
+    rdfs:range emp:RequerimientoDeCompetencia .
+
+emp:especificaCompetencia
+    a owl:ObjectProperty ;
+    rdfs:label "especifica competencia"@es ;
+    rdfs:comment "Indica la competencia descrita por un requerimiento."@es ;
+    rdfs:domain emp:RequerimientoDeCompetencia ;
+    rdfs:range emp:Competencia .
+
+emp:tieneTrayectoria
+    a owl:ObjectProperty ;
+    rdfs:label "tiene trayectoria"@es ;
+    rdfs:comment "Relaciona un candidato con su trayectoria laboral."@es ;
+    rdfs:domain emp:Candidato ;
+    rdfs:range emp:TrayectoriaLaboral .
+
+emp:contieneEtapa
+    a owl:ObjectProperty ;
+    rdfs:label "contiene etapa"@es ;
+    rdfs:comment "Relaciona una trayectoria laboral con una de sus etapas."@es ;
+    rdfs:domain emp:TrayectoriaLaboral ;
+    rdfs:range emp:EtapaEnTrayectoriaLaboral .
+
+emp:etapaDeExperiencia
+    a owl:ObjectProperty ;
+    rdfs:label "etapa de experiencia"@es ;
+    rdfs:comment "Vincula una etapa de trayectoria con la experiencia laboral que contextualiza."@es ;
+    rdfs:domain emp:EtapaEnTrayectoriaLaboral ;
+    rdfs:range emp:ExperienciaLaboral .
+
+emp:etapaDeEducacion
+    a owl:ObjectProperty ;
+    rdfs:label "etapa de educación"@es ;
+    rdfs:comment "Vincula una etapa de trayectoria con la educación que contextualiza."@es ;
+    rdfs:domain emp:EtapaEnTrayectoriaLaboral ;
+    rdfs:range emp:Educacion .
+
+emp:recomiendaOferta
+    a owl:ObjectProperty ;
+    rdfs:label "recomienda oferta"@es ;
+    rdfs:comment "Indica la oferta laboral sugerida por una recomendación."@es ;
+    rdfs:domain emp:Recomendacion ;
+    rdfs:range emp:OfertaLaboral .
+
+emp:recomiendaCandidato
+    a owl:ObjectProperty ;
+    rdfs:label "recomienda candidato"@es ;
+    rdfs:comment "Indica el candidato asociado al sujeto de una recomendación."@es ;
+    rdfs:domain emp:Recomendacion ;
+    rdfs:range emp:Candidato .
+
+emp:tieneExplicacion
+    a owl:ObjectProperty ;
+    rdfs:label "tiene explicación"@es ;
+    rdfs:comment "Vincula una recomendación con su explicación."@es ;
+    rdfs:domain emp:Recomendacion ;
+    rdfs:range emp:Explicacion .
+
+emp:utilizaEvidencia
+    a owl:ObjectProperty ;
+    rdfs:label "utiliza evidencia"@es ;
+    rdfs:comment "Vincula una explicación con un recurso RDF que la respalda."@es ;
+    rdfs:domain emp:Explicacion ;
+    rdfs:range rdfs:Resource .
+
+emp:identificador
+    a owl:DatatypeProperty ;
+    rdfs:label "identificador"@es ;
+    rdfs:comment "Identificador opaco de un recurso; no debe contener datos personales."@es ;
+    rdfs:domain owl:Thing ;
+    rdfs:range <http://www.w3.org/2001/XMLSchema#string> .
+
+emp:nombre
+    a owl:DatatypeProperty ;
+    rdfs:label "nombre"@es ;
+    rdfs:comment "Nombre legible de una entidad, si se conoce y su uso es apropiado."@es ;
+    rdfs:domain owl:Thing ;
+    rdfs:range <http://www.w3.org/2001/XMLSchema#string> .
+
+emp:descripcion
+    a owl:DatatypeProperty ;
+    rdfs:label "descripción"@es ;
+    rdfs:comment "Descripción textual de un recurso."@es ;
+    rdfs:domain owl:Thing ;
+    rdfs:range <http://www.w3.org/2001/XMLSchema#string> .
+
+emp:fuente
+    a owl:DatatypeProperty ;
+    rdfs:label "fuente"@es ;
+    rdfs:comment "IRI de la fuente de información o evidencia."@es ;
+    rdfs:domain owl:Thing ;
+    rdfs:range <http://www.w3.org/2001/XMLSchema#anyURI> .
+
+emp:fechaCreacion
+    a owl:DatatypeProperty ;
+    rdfs:label "fecha de creación"@es ;
+    rdfs:comment "Fecha y hora de creación de un recurso."@es ;
+    rdfs:domain owl:Thing ;
+    rdfs:range <http://www.w3.org/2001/XMLSchema#dateTime> .
+
+emp:fechaInicio
+    a owl:DatatypeProperty ;
+    rdfs:label "fecha de inicio"@es ;
+    rdfs:comment "Fecha de inicio de un periodo o vigencia, cuando se conoce."@es ;
+    rdfs:domain owl:Thing ;
+    rdfs:range <http://www.w3.org/2001/XMLSchema#date> .
+
+emp:fechaFin
+    a owl:DatatypeProperty ;
+    rdfs:label "fecha de fin"@es ;
+    rdfs:comment "Fecha de fin de un periodo o vigencia, cuando se conoce."@es ;
+    rdfs:domain owl:Thing ;
+    rdfs:range <http://www.w3.org/2001/XMLSchema#date> .
+
+emp:fechaEvaluacion
+    a owl:DatatypeProperty ;
+    rdfs:label "fecha de evaluación"@es ;
+    rdfs:comment "Fecha en que se realizó la evaluación de competencia."@es ;
+    rdfs:domain emp:RankingDeCompetencia ;
+    rdfs:range <http://www.w3.org/2001/XMLSchema#date> .
+
+emp:puntuacion
+    a owl:DatatypeProperty ;
+    rdfs:label "puntuación"@es ;
+    rdfs:comment "Valor numérico de una evaluación; debe interpretarse junto con su escala."@es ;
+    rdfs:domain owl:Thing ;
+    rdfs:range <http://www.w3.org/2001/XMLSchema#decimal> .
+
+emp:escala
+    a owl:DatatypeProperty ;
+    rdfs:label "escala"@es ;
+    rdfs:comment "IRI de la escala usada para interpretar una puntuación o nivel."@es ;
+    rdfs:domain owl:Thing ;
+    rdfs:range <http://www.w3.org/2001/XMLSchema#anyURI> .
+
+emp:metodoEvaluacion
+    a owl:DatatypeProperty ;
+    rdfs:label "método de evaluación"@es ;
+    rdfs:comment "Método usado para obtener una evaluación."@es ;
+    rdfs:domain owl:Thing ;
+    rdfs:range <http://www.w3.org/2001/XMLSchema#string> .
+
+emp:nivel
+    a owl:DatatypeProperty ;
+    rdfs:label "nivel"@es ;
+    rdfs:comment "Nivel de dominio de un lenguaje según una escala identificada."@es ;
+    rdfs:domain emp:Lenguaje ;
+    rdfs:range <http://www.w3.org/2001/XMLSchema#string> .
+
+emp:nivelEsperado
+    a owl:DatatypeProperty ;
+    rdfs:label "nivel esperado"@es ;
+    rdfs:comment "Nivel requerido para una competencia en una oferta."@es ;
+    rdfs:domain emp:RequerimientoDeCompetencia ;
+    rdfs:range <http://www.w3.org/2001/XMLSchema#decimal> .
+
+emp:esObligatorio
+    a owl:DatatypeProperty ;
+    rdfs:label "es obligatorio"@es ;
+    rdfs:comment "Indica si un requerimiento de competencia se declara obligatorio."@es ;
+    rdfs:domain emp:RequerimientoDeCompetencia ;
+    rdfs:range <http://www.w3.org/2001/XMLSchema#boolean> .
+
+emp:ubicacion
+    a owl:DatatypeProperty ;
+    rdfs:label "ubicación"@es ;
+    rdfs:comment "Ubicación asociada a una oferta laboral."@es ;
+    rdfs:domain emp:OfertaLaboral ;
+    rdfs:range <http://www.w3.org/2001/XMLSchema#string> .
+
+emp:modalidad
+    a owl:DatatypeProperty ;
+    rdfs:label "modalidad"@es ;
+    rdfs:comment "Modalidad de trabajo indicada en una oferta."@es ;
+    rdfs:domain emp:OfertaLaboral ;
+    rdfs:range <http://www.w3.org/2001/XMLSchema#string> .
+
+emp:estadoOferta
+    a owl:DatatypeProperty ;
+    rdfs:label "estado de oferta"@es ;
+    rdfs:comment "Estado de publicación de una oferta laboral."@es ;
+    rdfs:domain emp:OfertaLaboral ;
+    rdfs:range <http://www.w3.org/2001/XMLSchema#string> .
+
+emp:accionRecomendada
+    a owl:DatatypeProperty ;
+    rdfs:label "acción recomendada"@es ;
+    rdfs:comment "Texto que describe una acción sugerida cuando la recomendación no apunta a una entidad RDF."@es ;
+    rdfs:domain emp:Recomendacion ;
+    rdfs:range <http://www.w3.org/2001/XMLSchema#string> .
+
+emp:vigenteHasta
+    a owl:DatatypeProperty ;
+    rdfs:label "vigente hasta"@es ;
+    rdfs:comment "Fecha hasta la que se considera vigente una recomendación."@es ;
+    rdfs:domain emp:Recomendacion ;
+    rdfs:range <http://www.w3.org/2001/XMLSchema#date> .
+
+emp:versionModelo
+    a owl:DatatypeProperty ;
+    rdfs:label "versión del modelo"@es ;
+    rdfs:comment "Versión del método o modelo que generó una recomendación."@es ;
+    rdfs:domain emp:Recomendacion ;
+    rdfs:range <http://www.w3.org/2001/XMLSchema#string> .

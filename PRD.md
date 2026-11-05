@@ -75,34 +75,52 @@ Las clases podrán organizarse en jerarquías cuando exista una distinción sem�
 
 La ontología debe contemplar relaciones con semántica y dominio/rango documentados. Como mínimo:
 
-| Relación conceptual              | Dominio → rango | Significado                                             |
-|----------------------------------|---|---------------------------------------------------------|
-| tiene educación                  | Candidato → Educacion | Formación registrada para el candidato.                 |
-| tiene experiencia laboral        | Candidato → ExperienciaLaboral | Experiencia asociada al perfil.                         |
-| posee competencia                | Candidato → Competencia | Competencia atribuida o declarada por el candidato.     |
-| tiene habilidad                  | Candidato → Habilidad | Habilidad registrada en el perfil.                      |
-| tiene nivel de lenguaje          | Candidato → Lenguaje | Lenguaje y nivel asociados al candidato.                |
-| tiene ranking                    | Candidato o perfil → RankingDeCompetencia | Evaluación contextualizada de una competencia.          |
-| evalúa competencia               | RankingDeCompetencia → Competencia | Competencia a la que corresponde la evaluación.         |
-| tiene factor                     | PerfilSocioemocional → FactorSocioemocional | Factor incluido en el perfil.                           |
-| tiene perfil socioemocional      | Candidato → PerfilSocioemocional | Asociación cuyo uso requiere controles de privacidad.   |
-| conoce a red social              | Candidato → RedSocial | Persona o grupo de contacto profesional conocido por el candidato. |
-| facilita recurso social          | RedSocial → RecursoSocial | Recurso o habilidad suave al que se accede mediante la conexión. |
-| publicado por                    | OfertaLaboral → Empleador | Organización asociada a la publicación.                 |
-| requiere competencia             | OfertaLaboral → RequerimientoDeCompetencia | Requisitos declarados para la oferta.                   |
-| especifica competencia           | RequerimientoDeCompetencia → Competencia | Competencia requerida.                                  |
-| tiene trayectoria                | Candidato → TrayectoriaLaboral | Trayectoria atribuida al candidato.                     |
-| contiene etapa                   | TrayectoriaLaboral → EtapaEnTrayectoriaLaboral | Etapa que forma parte de la trayectoria.                |
-| describe experiencia o educación | EtapaEnTrayectoriaLaboral → ExperienciaLaboral o Educacion | Elemento de perfil contextualizado por la etapa.        |
-| recomienda                       | Recomendacion → OfertaLaboral, Candidato o acción definida | Destino o sujeto de la recomendación.                   |
-| tiene explicación                | Recomendacion → Explicacion | Justificación asociada al resultado.                    |
-| utiliza evidencia                | Explicacion → recursos o entidades fuente | Elementos que respaldan la explicación.                 |
+| Propiedad OWL | Dominio → rango | Significado |
+|---|---|---|
+| `tieneEducacion` | Candidato → Educacion | Formación registrada para el candidato. |
+| `tieneExperienciaLaboral` | Candidato → ExperienciaLaboral | Experiencia asociada al perfil. |
+| `poseeCompetencia` | Candidato → Competencia | Competencia declarada o evaluada. |
+| `tieneHabilidad` | Candidato → Habilidad | Habilidad práctica o técnica. |
+| `tieneHabilidadSuave` | Candidato → HabilidadSuave | Habilidad no técnica. |
+| `dominaLenguaje` | Candidato → Lenguaje | Idioma y nivel asociados al candidato. |
+| `tieneRanking` | Candidato → RankingDeCompetencia | Evaluación de competencia contextualizada. |
+| `evaluaCompetencia` | RankingDeCompetencia → Competencia | Competencia evaluada. |
+| `tienePerfilSocioemocional` | Candidato → PerfilSocioemocional | Asociación opcional y sensible. |
+| `tieneFactorSocioemocional` | PerfilSocioemocional → FactorSocioemocional | Factor incluido en el perfil. |
+| `conoceA` | Candidato → RedSocial | Contacto profesional conocido. |
+| `facilitaRecursoSocial` | RedSocial → RecursoSocial | Recurso accesible mediante la conexión. |
+| `publicadoPor` | OfertaLaboral → Empleador | Empleador asociado a la publicación. |
+| `requiereCompetencia` | OfertaLaboral → RequerimientoDeCompetencia | Requisito declarado para la oferta. |
+| `especificaCompetencia` | RequerimientoDeCompetencia → Competencia | Competencia requerida. |
+| `tieneTrayectoria` | Candidato → TrayectoriaLaboral | Trayectoria del candidato. |
+| `contieneEtapa` | TrayectoriaLaboral → EtapaEnTrayectoriaLaboral | Etapa que forma parte de la trayectoria. |
+| `etapaDeExperiencia` | EtapaEnTrayectoriaLaboral → ExperienciaLaboral | Experiencia contextualizada por la etapa. |
+| `etapaDeEducacion` | EtapaEnTrayectoriaLaboral → Educacion | Educación contextualizada por la etapa. |
+| `recomiendaOferta` | Recomendacion → OfertaLaboral | Oferta sugerida. |
+| `recomiendaCandidato` | Recomendacion → Candidato | Candidato asociado a la recomendación. |
+| `tieneExplicacion` | Recomendacion → Explicacion | Justificación asociada al resultado. |
+| `utilizaEvidencia` | Explicacion → rdfs:Resource | Recurso RDF que respalda la explicación. |
 
-La implementación deberá escoger nombres de propiedades únicos y consistentes. Si una relación tiene varios tipos posibles de destino, estos deben definirse explícitamente y no dejarse ambiguos por conveniencia de implementación.
+Las relaciones con destinos alternativos se representan mediante propiedades específicas para mantener explícitos sus rangos. Una acción recomendada en texto se representa con la propiedad de datos `accionRecomendada`, no como una entidad RDF sin tipo definido.
 
 ## 8. Propiedades de datos y metadatos
 
-Las entidades pertinentes deben poder incluir, cuando se conozca:
+Las propiedades de datos definidas para el esqueleto incluyen:
+
+| Propiedad | Dominio | Rango | Uso |
+|---|---|---|---|
+| `identificador`, `nombre`, `descripcion` | `owl:Thing` | `xsd:string` | Identidad opaca y texto descriptivo. |
+| `fuente`, `escala` | `owl:Thing` | `xsd:anyURI` | IRI de procedencia o de escala. |
+| `fechaCreacion`, `fechaInicio`, `fechaFin` | `owl:Thing` | `xsd:dateTime` o `xsd:date` según la propiedad | Creación del recurso y periodos. |
+| `fechaEvaluacion` | `RankingDeCompetencia` | `xsd:date` | Fecha de la evaluación. |
+| `vigenteHasta` | `Recomendacion` | `xsd:date` | Vigencia de la recomendación. |
+| `puntuacion`, `metodoEvaluacion` | `owl:Thing` | `xsd:decimal` o `xsd:string` según la propiedad | Resultado y método, interpretados con la escala indicada. |
+| `nivel` | `Lenguaje` | `xsd:string` | Nivel de dominio de lenguaje. |
+| `nivelEsperado`, `esObligatorio` | `RequerimientoDeCompetencia` | `xsd:decimal` o `xsd:boolean` según la propiedad | Nivel requerido y obligatoriedad. |
+| `ubicacion`, `modalidad`, `estadoOferta` | `OfertaLaboral` | `xsd:string` | Condiciones y estado de publicación. |
+| `accionRecomendada`, `versionModelo` | `Recomendacion` | `xsd:string` | Acción sugerida y versión del modelo. |
+
+Las propiedades de metadatos compartidas no limitan su dominio a una clase específica; así se evita que varias declaraciones `rdfs:domain` impliquen una intersección accidental. Sus usos previstos se documentan a continuación. Las entidades pertinentes pueden incluir, cuando se conozca:
 
 - Identificador estable y etiqueta legible.
 - Descripción y fuente de la información.
