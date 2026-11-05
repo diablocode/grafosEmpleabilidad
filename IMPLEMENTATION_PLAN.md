@@ -91,12 +91,12 @@ Construir la ontología y su integración con Apache Jena en capas pequeñas, ve
 
 **Validación de salida**
 
-- [ ] Los valores admitidos y sus etiquetas/definiciones están documentados y no se confunden entre escalas.
-- [ ] Cada puntuación de competencia puede vincularse a su escala.
-- [ ] Los niveles de lenguaje aceptados corresponden al MCER.
-- [ ] Datos socioemocionales no reciben escalas o valores inventados.
+- [x] Los valores admitidos y sus etiquetas/definiciones están documentados y no se confunden entre escalas.
+- [x] Cada puntuación de competencia puede vincularse a su escala.
+- [x] Los niveles de lenguaje aceptados corresponden al MCER.
+- [x] Datos socioemocionales no reciben escalas o valores inventados.
 
-**Punto de revisión:** aprobar definiciones y valores controlados antes de escribir reglas SHACL.
+**Punto de revisión:** catálogos SKOS y enlaces desde rankings, lenguajes y recomendaciones verificados con pruebas. Revisar la interpretación de la escala propia 1–5 antes de definir reglas SHACL en la Capa 4.
 
 ### Capa 4 — Validación de datos con SHACL
 

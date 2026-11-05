@@ -11,6 +11,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFDataMgr;
@@ -66,7 +67,9 @@ class EmployabilityOntologyTest {
             Map.entry("recomiendaOferta", new String[] {"Recomendacion", "OfertaLaboral"}),
             Map.entry("recomiendaCandidato", new String[] {"Recomendacion", "Candidato"}),
             Map.entry("tieneExplicacion", new String[] {"Recomendacion", "Explicacion"}),
-            Map.entry("utilizaEvidencia", new String[] {"Explicacion", "Resource"}));
+            Map.entry("utilizaEvidencia", new String[] {"Explicacion", "Resource"}),
+            Map.entry("tipoRecomendacion", new String[] {"Recomendacion", "SKOSConcept"}),
+            Map.entry("nivelMCER", new String[] {"Lenguaje", "SKOSConcept"}));
     private static final Map<String, String[]> EXPECTED_DATATYPE_PROPERTIES = Map.ofEntries(
             Map.entry("identificador", new String[] {"Thing", "string"}),
             Map.entry("nombre", new String[] {"Thing", "string"}),
@@ -146,6 +149,8 @@ class EmployabilityOntologyTest {
             assertEquals(NS + domainAndRange[0], property.getProperty(RDFS.domain).getResource().getURI());
             String expectedRange = domainAndRange[1].equals("Resource")
                     ? RDFS.Resource.getURI()
+                    : domainAndRange[1].equals("SKOSConcept")
+                            ? "http://www.w3.org/2004/02/skos/core#Concept"
                     : NS + domainAndRange[1];
             assertEquals(expectedRange, property.getProperty(RDFS.range).getResource().getURI());
             assertTrue(property.hasProperty(RDFS.label), name + " is missing its label");
@@ -203,6 +208,95 @@ class EmployabilityOntologyTest {
         assertTrue(model.contains(recommendation, model.createProperty(NS + "recomiendaOferta"), offer));
         assertTrue(model.contains(recommendation, model.createProperty(NS + "tieneExplicacion"), explanation));
         assertTrue(model.contains(explanation, model.createProperty(NS + "utilizaEvidencia"), skill));
+    }
+
+    @Test
+    void controlledCatalogsContainTheDocumentedValues() {
+        Model model = loadOntology();
+        String skos = "http://www.w3.org/2004/02/skos/core#";
+        Property inScheme = model.createProperty(skos + "inScheme");
+        Property notation = model.createProperty(skos + "notation");
+        Resource conceptType = model.createResource(skos + "Concept");
+        Set<String> schemeUris = model.listResourcesWithProperty(RDF.type, model.createResource(skos + "ConceptScheme"))
+                .mapWith(Resource::getURI)
+                .toSet();
+
+        assertEquals(
+                Set.of(NS + "escalaCompetencia1a5", NS + "escalaMCER", NS + "tiposDeRecomendacion"),
+                schemeUris);
+        assertEquals(Set.of("1", "2", "3", "4", "5"),
+                conceptNotations(model, conceptType, inScheme, notation, NS + "escalaCompetencia1a5"));
+        assertEquals(Set.of("A1", "A2", "B1", "B2", "C1", "C2"),
+                conceptNotations(model, conceptType, inScheme, notation, NS + "escalaMCER"));
+        assertEquals(
+                Set.of(
+                        "oferta-compatible",
+                        "competencia-por-desarrollar",
+                        "recurso-de-aprendizaje",
+                        "mejora-de-perfil",
+                        "siguiente-accion-sugerida"),
+                conceptNotations(model, conceptType, inScheme, notation, NS + "tiposDeRecomendacion"));
+        assertFalse(schemeUris.stream().anyMatch(uri -> uri.toLowerCase().contains("socioemocional")));
+    }
+
+    @Test
+    void everyControlledConceptHasASpanishPreferredLabel() {
+        Model model = loadOntology();
+        String skos = "http://www.w3.org/2004/02/skos/core#";
+        Resource conceptType = model.createResource(skos + "Concept");
+        Property prefLabel = model.createProperty(skos + "prefLabel");
+        Set<String> conceptsWithoutSpanishLabels = model
+                .listResourcesWithProperty(RDF.type, conceptType)
+                .filterKeep(concept -> !concept.hasProperty(prefLabel)
+                        || !"es".equals(concept.getProperty(prefLabel).getLanguage()))
+                .mapWith(Resource::getURI)
+                .toSet();
+
+        assertTrue(conceptsWithoutSpanishLabels.isEmpty(), conceptsWithoutSpanishLabels.toString());
+    }
+
+    @Test
+    void evaluationsAndRecommendationsReferenceTheirControlledCatalogs() {
+        Model model = loadOntology();
+        String skos = "http://www.w3.org/2004/02/skos/core#";
+        Resource candidate = model.createResource(NS + "candidate-example");
+        Resource ranking = model.createResource(NS + "ranking-example");
+        Resource language = model.createResource(NS + "language-example");
+        Resource recommendation = model.createResource(NS + "recommendation-example");
+        Resource competenceScale = model.createResource(NS + "escalaCompetencia1a5");
+        Resource languageScale = model.createResource(NS + "escalaMCER");
+
+        model.add(ranking, model.createProperty(NS + "puntuacion"), model.createTypedLiteral(
+                "4.0", org.apache.jena.datatypes.xsd.XSDDatatype.XSDdecimal));
+        model.add(ranking, model.createProperty(NS + "escala"), model.createTypedLiteral(
+                competenceScale.getURI(), org.apache.jena.datatypes.xsd.XSDDatatype.XSDanyURI));
+        model.add(language, model.createProperty(NS + "nivel"), "B2");
+        model.add(language, model.createProperty(NS + "escala"), model.createTypedLiteral(
+                languageScale.getURI(), org.apache.jena.datatypes.xsd.XSDDatatype.XSDanyURI));
+        model.add(language, model.createProperty(NS + "nivelMCER"), model.createResource(NS + "nivelB2"));
+        model.add(recommendation, model.createProperty(NS + "tipoRecomendacion"),
+                model.createResource(NS + "ofertaCompatible"));
+        model.add(candidate, model.createProperty(NS + "tieneRanking"), ranking);
+        model.add(candidate, model.createProperty(NS + "dominaLenguaje"), language);
+
+        assertEquals(competenceScale.getURI(), model.getProperty(
+                ranking, model.createProperty(NS + "escala")).getString());
+        assertTrue(model.contains(language, model.createProperty(NS + "nivelMCER"),
+                model.createResource(NS + "nivelB2")));
+        assertEquals(languageScale.getURI(), model.getProperty(
+                language, model.createProperty(NS + "escala")).getString());
+        assertTrue(model.contains(recommendation, model.createProperty(NS + "tipoRecomendacion"),
+                model.createResource(NS + "ofertaCompatible")));
+        assertTrue(model.contains(model.createResource(NS + "nivelB2"),
+                model.createProperty(skos + "inScheme"), languageScale));
+    }
+
+    private Set<String> conceptNotations(
+            Model model, Resource conceptType, Property inScheme, Property notation, String schemeUri) {
+        return model.listResourcesWithProperty(RDF.type, conceptType)
+                .filterKeep(concept -> concept.hasProperty(inScheme, model.createResource(schemeUri)))
+                .mapWith(concept -> concept.getProperty(notation).getString())
+                .toSet();
     }
 
     private Model loadOntology() {

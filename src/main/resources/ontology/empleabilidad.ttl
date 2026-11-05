@@ -1,6 +1,7 @@
 @prefix emp: <https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 <https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad>
     a owl:Ontology ;
@@ -404,3 +405,127 @@ emp:versionModelo
     rdfs:comment "Versión del método o modelo que generó una recomendación."@es ;
     rdfs:domain emp:Recomendacion ;
     rdfs:range <http://www.w3.org/2001/XMLSchema#string> .
+
+emp:tipoRecomendacion
+    a owl:ObjectProperty ;
+    rdfs:label "tipo de recomendación"@es ;
+    rdfs:comment "Asigna a una recomendación un tipo controlado del catálogo SKOS de recomendaciones."@es ;
+    rdfs:domain emp:Recomendacion ;
+    rdfs:range skos:Concept .
+
+emp:nivelMCER
+    a owl:ObjectProperty ;
+    rdfs:label "nivel MCER"@es ;
+    rdfs:comment "Asigna a un idioma un nivel controlado del Marco Común Europeo de Referencia para las Lenguas."@es ;
+    rdfs:domain emp:Lenguaje ;
+    rdfs:range skos:Concept .
+
+emp:escalaCompetencia1a5
+    a skos:ConceptScheme ;
+    rdfs:label "Escala de competencia de 1 a 5"@es ;
+    rdfs:comment "Escala ordinal propia para registrar competencia. Las puntuaciones solo se comparan dentro de esta escala."@es .
+
+emp:competenciaNivel1
+    a skos:Concept ;
+    skos:inScheme emp:escalaCompetencia1a5 ;
+    skos:notation "1" ;
+    skos:prefLabel "Muy poca habilidad"@es .
+
+emp:competenciaNivel2
+    a skos:Concept ;
+    skos:inScheme emp:escalaCompetencia1a5 ;
+    skos:notation "2" ;
+    skos:prefLabel "Básico"@es .
+
+emp:competenciaNivel3
+    a skos:Concept ;
+    skos:inScheme emp:escalaCompetencia1a5 ;
+    skos:notation "3" ;
+    skos:prefLabel "Intermedio"@es .
+
+emp:competenciaNivel4
+    a skos:Concept ;
+    skos:inScheme emp:escalaCompetencia1a5 ;
+    skos:notation "4" ;
+    skos:prefLabel "Avanzado"@es .
+
+emp:competenciaNivel5
+    a skos:Concept ;
+    skos:inScheme emp:escalaCompetencia1a5 ;
+    skos:notation "5" ;
+    skos:prefLabel "Experto"@es .
+
+emp:escalaMCER
+    a skos:ConceptScheme ;
+    rdfs:label "Marco Común Europeo de Referencia para las Lenguas"@es ;
+    rdfs:comment "Catálogo de niveles de competencia lingüística A1 a C2."@es .
+
+emp:nivelA1
+    a skos:Concept ;
+    skos:inScheme emp:escalaMCER ;
+    skos:notation "A1" ;
+    skos:prefLabel "A1 - Acceso"@es .
+
+emp:nivelA2
+    a skos:Concept ;
+    skos:inScheme emp:escalaMCER ;
+    skos:notation "A2" ;
+    skos:prefLabel "A2 - Plataforma"@es .
+
+emp:nivelB1
+    a skos:Concept ;
+    skos:inScheme emp:escalaMCER ;
+    skos:notation "B1" ;
+    skos:prefLabel "B1 - Umbral"@es .
+
+emp:nivelB2
+    a skos:Concept ;
+    skos:inScheme emp:escalaMCER ;
+    skos:notation "B2" ;
+    skos:prefLabel "B2 - Avanzado"@es .
+
+emp:nivelC1
+    a skos:Concept ;
+    skos:inScheme emp:escalaMCER ;
+    skos:notation "C1" ;
+    skos:prefLabel "C1 - Dominio operativo eficaz"@es .
+
+emp:nivelC2
+    a skos:Concept ;
+    skos:inScheme emp:escalaMCER ;
+    skos:notation "C2" ;
+    skos:prefLabel "C2 - Maestría"@es .
+
+emp:tiposDeRecomendacion
+    a skos:ConceptScheme ;
+    rdfs:label "Tipos de recomendación de empleabilidad"@es .
+
+emp:ofertaCompatible
+    a skos:Concept ;
+    skos:inScheme emp:tiposDeRecomendacion ;
+    skos:notation "oferta-compatible" ;
+    skos:prefLabel "Oferta compatible"@es .
+
+emp:competenciaPorDesarrollar
+    a skos:Concept ;
+    skos:inScheme emp:tiposDeRecomendacion ;
+    skos:notation "competencia-por-desarrollar" ;
+    skos:prefLabel "Competencia por desarrollar"@es .
+
+emp:recursoDeAprendizaje
+    a skos:Concept ;
+    skos:inScheme emp:tiposDeRecomendacion ;
+    skos:notation "recurso-de-aprendizaje" ;
+    skos:prefLabel "Recurso de aprendizaje"@es .
+
+emp:mejoraDePerfil
+    a skos:Concept ;
+    skos:inScheme emp:tiposDeRecomendacion ;
+    skos:notation "mejora-de-perfil" ;
+    skos:prefLabel "Mejora de perfil"@es .
+
+emp:siguienteAccionSugerida
+    a skos:Concept ;
+    skos:inScheme emp:tiposDeRecomendacion ;
+    skos:notation "siguiente-accion-sugerida" ;
+    skos:prefLabel "Siguiente acción sugerida"@es .

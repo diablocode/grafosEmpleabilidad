@@ -120,6 +120,8 @@ Las propiedades de datos definidas para el esqueleto incluyen:
 | `ubicacion`, `modalidad`, `estadoOferta` | `OfertaLaboral` | `xsd:string` | Condiciones y estado de publicación. |
 | `accionRecomendada`, `versionModelo` | `Recomendacion` | `xsd:string` | Acción sugerida y versión del modelo. |
 
+Además, `nivelMCER` relaciona un `Lenguaje` con un concepto SKOS del catálogo MCER y `tipoRecomendacion` relaciona una `Recomendacion` con un concepto SKOS del catálogo de recomendaciones. La propiedad `escala` identifica con un literal `xsd:anyURI` la escala usada para interpretar puntuaciones y niveles.
+
 Las propiedades de metadatos compartidas no limitan su dominio a una clase específica; así se evita que varias declaraciones `rdfs:domain` impliquen una intersección accidental. Sus usos previstos se documentan a continuación. Las entidades pertinentes pueden incluir, cuando se conozca:
 
 - Identificador estable y etiqueta legible.
@@ -201,7 +203,10 @@ Se eligen opciones sencillas y ampliamente utilizadas como punto de partida. Las
 
 - **Competencias:** usar inicialmente una escala ordinal propia de 1 a 5, documentando cada nivel. Cada evaluación debe registrar escala, fuente, método y fecha; no comparar valores de escalas distintas directamente.
 - **Lenguajes:** usar el Marco Común Europeo de Referencia para las Lenguas (MCER), con niveles A1–C2, y permitir que el nivel no se especifique.
+- **Tipos de recomendación:** usar conceptos SKOS con notaciones estables `oferta-compatible`, `competencia-por-desarrollar`, `recurso-de-aprendizaje`, `mejora-de-perfil` y `siguiente-accion-sugerida`.
 - **Factores socioemocionales:** no adoptar una escala ni instrumento por defecto. Representar estos datos solo cuando se defina un marco validado y autorizado, registrando instrumento, versión y contexto. No inferirlos de redes sociales u otros datos indirectos.
+
+La escala inicial de competencia define estos valores: 1 = muy poca habilidad, 2 = básico, 3 = intermedio, 4 = avanzado y 5 = experto. Los niveles MCER se representan mediante conceptos SKOS con notaciones A1, A2, B1, B2, C1 y C2. Estos catálogos identifican valores y etiquetas; no autorizan comparar escalas distintas ni inferir competencias no declaradas.
 
 ### 15.3 Vocabularios externos y alineación
 
