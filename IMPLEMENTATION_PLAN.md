@@ -2,7 +2,7 @@
 
 ## Propósito
 
-Construir la ontología y su integración con Apache Jena en capas pequeñas, verificables e incrementales. Al terminar cada capa, se ejecutan sus criterios de validación y se revisan antes de iniciar la siguiente. Este plan se basa en los requisitos de `PRD.md`; no implementa código ni archivos RDF/OWL.
+Construir la ontología y su integración con Apache Jena en capas pequeñas, verificables e incrementales. Al terminar cada capa, se ejecutan sus criterios de validación y se revisan antes de iniciar la siguiente. Este plan se basa en los requisitos de `PRD.md` y registra las capas, sus implementaciones y validaciones.
 
 ## Reglas de trabajo
 
@@ -191,12 +191,12 @@ Construir la ontología y su integración con Apache Jena en capas pequeñas, ve
 
 **Validación de salida**
 
-- [ ] `gradlew test` termina correctamente desde un entorno limpio.
-- [ ] Las pruebas cubren los criterios de aceptación del PRD y fallan ante fixtures inválidos.
-- [ ] Un desarrollador puede seguir la documentación para cargar la ontología, validar un grafo y ejecutar las consultas.
-- [ ] No se incluyen credenciales ni datos personales en código, ejemplos o archivos de prueba.
+- [x] `gradlew test` termina correctamente desde un entorno limpio.
+- [x] Las pruebas cubren los criterios de aceptación del PRD y fallan ante fixtures inválidos.
+- [x] Un desarrollador puede seguir la documentación para cargar la ontología, validar un grafo y ejecutar las consultas.
+- [x] No se incluyen credenciales ni datos personales reales en código, ejemplos o archivos de prueba.
 
-**Punto de revisión:** aceptar la integración completa antes de etiquetar o publicar la primera versión.
+**Punto de revisión:** Capa 8 completada. `EmployabilityJena` integra la carga del vocabulario/grafo de ejemplo y la ejecución SELECT; `EmployabilityDataValidator` aplica SHACL. `README.md` documenta uso, pruebas, regeneración RDF/XML, extensión del vocabulario, escalas, privacidad e IRI local.
 
 ## Criterio de finalización
 
