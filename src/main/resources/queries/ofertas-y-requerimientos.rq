@@ -1,0 +1,15 @@
+PREFIX emp: <https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#>
+
+SELECT DISTINCT ?oferta ?nombreOferta ?empleador ?nombreEmpleador
+                ?competencia ?nivelEsperado ?obligatorio
+WHERE {
+    ?oferta a emp:OfertaLaboral ;
+        emp:nombre ?nombreOferta ;
+        emp:publicadoPor ?empleador ;
+        emp:requiereCompetencia ?requerimiento .
+    ?empleador emp:nombre ?nombreEmpleador .
+    ?requerimiento emp:especificaCompetencia ?competencia ;
+        emp:nivelEsperado ?nivelEsperado ;
+        emp:esObligatorio ?obligatorio .
+}
+ORDER BY ?nombreOferta ?competencia

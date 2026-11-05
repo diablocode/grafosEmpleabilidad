@@ -1,0 +1,12 @@
+PREFIX emp: <https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#>
+
+SELECT DISTINCT ?candidato ?nombre ?educacion ?experiencia ?competencia ?trayectoria
+WHERE {
+    ?candidato a emp:Candidato ;
+        emp:nombre ?nombre .
+    OPTIONAL { ?candidato emp:tieneEducacion/emp:nombre ?educacion }
+    OPTIONAL { ?candidato emp:tieneExperienciaLaboral/emp:nombre ?experiencia }
+    OPTIONAL { ?candidato emp:poseeCompetencia ?competencia }
+    OPTIONAL { ?candidato emp:tieneTrayectoria ?trayectoria }
+}
+ORDER BY ?nombre

@@ -1,0 +1,13 @@
+# Exploración de competencias compartidas; no es una puntuación, ranking ni decisión de contratación.
+PREFIX emp: <https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#>
+
+SELECT DISTINCT ?candidato ?nombreCandidato ?oferta ?nombreOferta ?competencia
+WHERE {
+    ?candidato a emp:Candidato ;
+        emp:nombre ?nombreCandidato ;
+        emp:poseeCompetencia ?competencia .
+    ?oferta a emp:OfertaLaboral ;
+        emp:nombre ?nombreOferta ;
+        emp:requiereCompetencia/emp:especificaCompetencia ?competencia .
+}
+ORDER BY ?nombreCandidato ?nombreOferta

@@ -1,0 +1,895 @@
+# Todos los nombres, empleadores, trayectorias y datos de este grafo son ficticios.
+@prefix emp: <https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+emp:candidato001
+    a emp:Candidato ;
+    emp:identificador "candidate-synthetic-001" ;
+    emp:nombre "Juan Pablo González Ramírez" ;
+    emp:tieneEducacion emp:educacion001 ;
+    emp:tieneExperienciaLaboral emp:experiencia001 ;
+    emp:poseeCompetencia emp:competenciaJava ;
+    emp:tieneHabilidad emp:habilidadJava ;
+    emp:tieneHabilidadSuave emp:habilidadColaboracion ;
+    emp:dominaLenguaje emp:idiomaIngles001 ;
+    emp:tieneRanking emp:ranking001 ;
+    emp:tieneTrayectoria emp:trayectoria001 ;
+    emp:conoceA emp:contactoProfesional001 .
+
+emp:educacion001
+    a emp:Educacion ;
+    emp:nombre "Ingeniería en Sistemas Computacionales" ;
+    emp:fechaInicio "2018-08-01"^^xsd:date ;
+    emp:fechaFin "2022-06-30"^^xsd:date .
+
+emp:experiencia001
+    a emp:ExperienciaLaboral ;
+    emp:nombre "Desarrollador backend en Soluciones Digitales del Bajío" ;
+    emp:fechaInicio "2022-07-01"^^xsd:date ;
+    emp:fechaFin "2024-12-31"^^xsd:date .
+
+emp:trayectoria001
+    a emp:TrayectoriaLaboral ;
+    emp:contieneEtapa emp:etapa001 .
+
+emp:etapa001
+    a emp:EtapaEnTrayectoriaLaboral ;
+    emp:etapaDeEducacion emp:educacion001 ;
+    emp:etapaDeExperiencia emp:experiencia001 .
+
+emp:idiomaIngles001
+    a emp:Lenguaje ;
+    emp:nivelMCER emp:nivelB2 ;
+    emp:escala "https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#escalaMCER"^^xsd:anyURI .
+
+emp:ranking001
+    a emp:RankingDeCompetencia ;
+    emp:evaluaCompetencia emp:competenciaJava ;
+    emp:puntuacion 4 ;
+    emp:escala "https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#escalaCompetencia1a5"^^xsd:anyURI ;
+    emp:fechaEvaluacion "2025-01-15"^^xsd:date ;
+    emp:fuente "https://example.org/synthetic-assessments/001"^^xsd:anyURI ;
+    emp:metodoEvaluacion "Ejercicio técnico sintético" .
+
+emp:habilidadJava a emp:Habilidad ;
+    emp:nombre "Java" .
+
+emp:habilidadColaboracion a emp:HabilidadSuave ;
+    emp:nombre "Colaboración en equipo" .
+
+emp:contactoProfesional001
+    a emp:RedSocial ;
+    emp:identificador "synthetic-contact-001" ;
+    emp:nombre "Mariana Torres Hernández" ;
+    emp:facilitaRecursoSocial emp:recursoMentoria001 .
+
+emp:recursoMentoria001
+    a emp:RecursoSocial ;
+    emp:identificador "synthetic-social-resource-001" ;
+    emp:descripcion "Referencia ficticia para una sesión de mentoría sobre desarrollo de software." .
+
+emp:candidato002
+    a emp:Candidato ;
+    emp:identificador "candidate-synthetic-002" ;
+    emp:nombre "María Fernanda López Castillo" ;
+    emp:tieneEducacion emp:educacion002 ;
+    emp:tieneExperienciaLaboral emp:experiencia002 ;
+    emp:poseeCompetencia emp:competenciaPython ;
+    emp:tieneHabilidad emp:habilidadPython ;
+    emp:dominaLenguaje emp:idiomaIngles002 ;
+    emp:tieneRanking emp:ranking002 ;
+    emp:tieneTrayectoria emp:trayectoria002 .
+
+emp:educacion002
+    a emp:Educacion ;
+    emp:nombre "Licenciatura en Matemáticas Aplicadas" ;
+    emp:fechaInicio "2019-08-01"^^xsd:date ;
+    emp:fechaFin "2023-06-30"^^xsd:date .
+
+emp:experiencia002
+    a emp:ExperienciaLaboral ;
+    emp:nombre "Analista de datos en Analítica Occidente" ;
+    emp:fechaInicio "2023-07-01"^^xsd:date ;
+    emp:fechaFin "2024-12-31"^^xsd:date .
+
+emp:trayectoria002
+    a emp:TrayectoriaLaboral ;
+    emp:contieneEtapa emp:etapa002 .
+
+emp:etapa002
+    a emp:EtapaEnTrayectoriaLaboral ;
+    emp:etapaDeEducacion emp:educacion002 ;
+    emp:etapaDeExperiencia emp:experiencia002 .
+
+emp:idiomaIngles002
+    a emp:Lenguaje ;
+    emp:nivelMCER emp:nivelC1 ;
+    emp:escala "https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#escalaMCER"^^xsd:anyURI .
+
+emp:ranking002
+    a emp:RankingDeCompetencia ;
+    emp:evaluaCompetencia emp:competenciaPython ;
+    emp:puntuacion 5 ;
+    emp:escala "https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#escalaCompetencia1a5"^^xsd:anyURI ;
+    emp:fechaEvaluacion "2025-01-16"^^xsd:date ;
+    emp:fuente "https://example.org/synthetic-assessments/002"^^xsd:anyURI ;
+    emp:metodoEvaluacion "Proyecto de análisis sintético" .
+
+emp:habilidadPython a emp:Habilidad ;
+    emp:nombre "Python" .
+
+emp:candidato003
+    a emp:Candidato ;
+    emp:identificador "candidate-synthetic-003" ;
+    emp:nombre "Diego Alejandro Martínez Ruiz" ;
+    emp:tieneEducacion emp:educacion003 ;
+    emp:tieneExperienciaLaboral emp:experiencia003 ;
+    emp:poseeCompetencia emp:competenciaCloud ;
+    emp:tieneHabilidad emp:habilidadCloud ;
+    emp:dominaLenguaje emp:idiomaIngles003 ;
+    emp:tieneRanking emp:ranking003 ;
+    emp:tieneTrayectoria emp:trayectoria003 .
+
+emp:educacion003
+    a emp:Educacion ;
+    emp:nombre "Ingeniería en Computación" ;
+    emp:fechaInicio "2017-08-01"^^xsd:date ;
+    emp:fechaFin "2021-06-30"^^xsd:date .
+
+emp:experiencia003
+    a emp:ExperienciaLaboral ;
+    emp:nombre "Ingeniero de infraestructura en Nube Tapatía" ;
+    emp:fechaInicio "2021-07-01"^^xsd:date ;
+    emp:fechaFin "2024-12-31"^^xsd:date .
+
+emp:trayectoria003
+    a emp:TrayectoriaLaboral ;
+    emp:contieneEtapa emp:etapa003 .
+
+emp:etapa003
+    a emp:EtapaEnTrayectoriaLaboral ;
+    emp:etapaDeEducacion emp:educacion003 ;
+    emp:etapaDeExperiencia emp:experiencia003 .
+
+emp:idiomaIngles003
+    a emp:Lenguaje ;
+    emp:nivelMCER emp:nivelB1 ;
+    emp:escala "https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#escalaMCER"^^xsd:anyURI .
+
+emp:ranking003
+    a emp:RankingDeCompetencia ;
+    emp:evaluaCompetencia emp:competenciaCloud ;
+    emp:puntuacion 3 ;
+    emp:escala "https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#escalaCompetencia1a5"^^xsd:anyURI ;
+    emp:fechaEvaluacion "2025-01-17"^^xsd:date ;
+    emp:fuente "https://example.org/synthetic-assessments/003"^^xsd:anyURI ;
+    emp:metodoEvaluacion "Laboratorio práctico sintético" .
+
+emp:habilidadCloud a emp:Habilidad ;
+    emp:nombre "Administración de infraestructura cloud" .
+
+emp:candidato004
+    a emp:Candidato ;
+    emp:identificador "candidate-synthetic-004" ;
+    emp:nombre "Valeria Sofía Ramírez Ortega" ;
+    emp:tieneEducacion emp:educacion004 ;
+    emp:tieneExperienciaLaboral emp:experiencia004 ;
+    emp:poseeCompetencia emp:competenciaDiseno ;
+    emp:tieneHabilidad emp:habilidadDiseno ;
+    emp:dominaLenguaje emp:idiomaIngles004 ;
+    emp:tieneRanking emp:ranking004 ;
+    emp:tieneTrayectoria emp:trayectoria004 .
+
+emp:educacion004
+    a emp:Educacion ;
+    emp:nombre "Licenciatura en Diseño para la Comunicación Gráfica" ;
+    emp:fechaInicio "2019-08-01"^^xsd:date ;
+    emp:fechaFin "2022-06-30"^^xsd:date .
+
+emp:experiencia004
+    a emp:ExperienciaLaboral ;
+    emp:nombre "Diseñadora UX/UI en Estudio Marea Digital" ;
+    emp:fechaInicio "2022-07-01"^^xsd:date ;
+    emp:fechaFin "2024-12-31"^^xsd:date .
+
+emp:trayectoria004
+    a emp:TrayectoriaLaboral ;
+    emp:contieneEtapa emp:etapa004 .
+
+emp:etapa004
+    a emp:EtapaEnTrayectoriaLaboral ;
+    emp:etapaDeEducacion emp:educacion004 ;
+    emp:etapaDeExperiencia emp:experiencia004 .
+
+emp:idiomaIngles004
+    a emp:Lenguaje ;
+    emp:nivelMCER emp:nivelB2 ;
+    emp:escala "https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#escalaMCER"^^xsd:anyURI .
+
+emp:ranking004
+    a emp:RankingDeCompetencia ;
+    emp:evaluaCompetencia emp:competenciaDiseno ;
+    emp:puntuacion 4 ;
+    emp:escala "https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#escalaCompetencia1a5"^^xsd:anyURI ;
+    emp:fechaEvaluacion "2025-01-18"^^xsd:date ;
+    emp:fuente "https://example.org/synthetic-assessments/004"^^xsd:anyURI ;
+    emp:metodoEvaluacion "Portafolio de diseño sintético" .
+
+emp:habilidadDiseno a emp:Habilidad ;
+    emp:nombre "Diseño de interfaces" .
+
+emp:candidato005
+    a emp:Candidato ;
+    emp:identificador "candidate-synthetic-005" ;
+    emp:nombre "Andrés Emiliano Sánchez Flores" ;
+    emp:tieneEducacion emp:educacion005 ;
+    emp:tieneExperienciaLaboral emp:experiencia005 ;
+    emp:poseeCompetencia emp:competenciaGestion ;
+    emp:tieneHabilidadSuave emp:habilidadLiderazgo ;
+    emp:dominaLenguaje emp:idiomaIngles005 ;
+    emp:tieneRanking emp:ranking005 ;
+    emp:tieneTrayectoria emp:trayectoria005 .
+
+emp:educacion005
+    a emp:Educacion ;
+    emp:nombre "Licenciatura en Administración de Empresas" ;
+    emp:fechaInicio "2018-08-01"^^xsd:date ;
+    emp:fechaFin "2022-06-30"^^xsd:date .
+
+emp:experiencia005
+    a emp:ExperienciaLaboral ;
+    emp:nombre "Coordinador de proyectos en Gestión Integral del Centro" ;
+    emp:fechaInicio "2022-07-01"^^xsd:date ;
+    emp:fechaFin "2024-12-31"^^xsd:date .
+
+emp:trayectoria005
+    a emp:TrayectoriaLaboral ;
+    emp:contieneEtapa emp:etapa005 .
+
+emp:etapa005
+    a emp:EtapaEnTrayectoriaLaboral ;
+    emp:etapaDeEducacion emp:educacion005 ;
+    emp:etapaDeExperiencia emp:experiencia005 .
+
+emp:idiomaIngles005
+    a emp:Lenguaje ;
+    emp:nivelMCER emp:nivelA2 ;
+    emp:escala "https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#escalaMCER"^^xsd:anyURI .
+
+emp:ranking005
+    a emp:RankingDeCompetencia ;
+    emp:evaluaCompetencia emp:competenciaGestion ;
+    emp:puntuacion 3 ;
+    emp:escala "https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#escalaCompetencia1a5"^^xsd:anyURI ;
+    emp:fechaEvaluacion "2025-01-19"^^xsd:date ;
+    emp:fuente "https://example.org/synthetic-assessments/005"^^xsd:anyURI ;
+    emp:metodoEvaluacion "Caso de planificación sintético" .
+
+emp:habilidadLiderazgo a emp:HabilidadSuave ;
+    emp:nombre "Liderazgo colaborativo" .
+
+emp:competenciaJava a emp:Competencia ;
+    emp:nombre "Desarrollo con Java" .
+
+emp:competenciaPython a emp:Competencia ;
+    emp:nombre "Programación con Python" .
+
+emp:competenciaCloud a emp:Competencia ;
+    emp:nombre "Infraestructura en la nube" .
+
+emp:competenciaDiseno a emp:Competencia ;
+    emp:nombre "Diseño de interfaces digitales" .
+
+emp:competenciaGestion a emp:Competencia ;
+    emp:nombre "Gestión de proyectos" .
+
+emp:empleador001 a emp:Empleador ;
+    emp:identificador "employer-synthetic-001" ;
+    emp:nombre "Soluciones Digitales del Bajío" .
+
+emp:empleador002 a emp:Empleador ;
+    emp:identificador "employer-synthetic-002" ;
+    emp:nombre "Analítica Occidente" .
+
+emp:empleador003 a emp:Empleador ;
+    emp:identificador "employer-synthetic-003" ;
+    emp:nombre "Nube Tapatía" .
+
+emp:empleador004 a emp:Empleador ;
+    emp:identificador "employer-synthetic-004" ;
+    emp:nombre "Estudio Marea Digital" .
+
+emp:empleador005 a emp:Empleador ;
+    emp:identificador "employer-synthetic-005" ;
+    emp:nombre "Gestión Integral del Centro" .
+
+emp:oferta001 a emp:OfertaLaboral ;
+    emp:identificador "offer-synthetic-001" ;
+    emp:nombre "Desarrollador backend Java" ;
+    emp:publicadoPor emp:empleador001 ;
+    emp:requiereCompetencia emp:requerimiento001 ;
+    emp:ubicacion "Guadalajara, Jalisco" ;
+    emp:modalidad "remota" ;
+    emp:fechaInicio "2025-01-01"^^xsd:date ;
+    emp:fechaFin "2025-12-31"^^xsd:date .
+
+emp:oferta002 a emp:OfertaLaboral ;
+    emp:identificador "offer-synthetic-002" ;
+    emp:nombre "Analista de datos" ;
+    emp:publicadoPor emp:empleador002 ;
+    emp:requiereCompetencia emp:requerimiento002 ;
+    emp:ubicacion "Zapopan, Jalisco" ;
+    emp:modalidad "híbrida" ;
+    emp:fechaInicio "2025-02-01"^^xsd:date ;
+    emp:fechaFin "2025-12-31"^^xsd:date .
+
+emp:oferta003 a emp:OfertaLaboral ;
+    emp:identificador "offer-synthetic-003" ;
+    emp:nombre "Ingeniero de infraestructura cloud" ;
+    emp:publicadoPor emp:empleador003 ;
+    emp:requiereCompetencia emp:requerimiento003 ;
+    emp:ubicacion "Remoto desde México" ;
+    emp:modalidad "remota" ;
+    emp:fechaInicio "2025-03-01"^^xsd:date ;
+    emp:fechaFin "2025-12-31"^^xsd:date .
+
+emp:oferta004 a emp:OfertaLaboral ;
+    emp:identificador "offer-synthetic-004" ;
+    emp:nombre "Diseñador de producto digital" ;
+    emp:publicadoPor emp:empleador004 ;
+    emp:requiereCompetencia emp:requerimiento004 ;
+    emp:ubicacion "Guadalajara, Jalisco" ;
+    emp:modalidad "presencial" ;
+    emp:fechaInicio "2025-04-01"^^xsd:date ;
+    emp:fechaFin "2025-12-31"^^xsd:date .
+
+emp:oferta005 a emp:OfertaLaboral ;
+    emp:identificador "offer-synthetic-005" ;
+    emp:nombre "Coordinador de proyectos" ;
+    emp:publicadoPor emp:empleador005 ;
+    emp:requiereCompetencia emp:requerimiento005 ;
+    emp:ubicacion "Tlaquepaque, Jalisco" ;
+    emp:modalidad "híbrida" ;
+    emp:fechaInicio "2025-05-01"^^xsd:date ;
+    emp:fechaFin "2025-12-31"^^xsd:date .
+
+emp:requerimiento001 a emp:RequerimientoDeCompetencia ;
+    emp:especificaCompetencia emp:competenciaJava ;
+    emp:nivelEsperado 4 ;
+    emp:esObligatorio true .
+
+emp:requerimiento002 a emp:RequerimientoDeCompetencia ;
+    emp:especificaCompetencia emp:competenciaPython ;
+    emp:nivelEsperado 4 ;
+    emp:esObligatorio true .
+
+emp:requerimiento003 a emp:RequerimientoDeCompetencia ;
+    emp:especificaCompetencia emp:competenciaCloud ;
+    emp:nivelEsperado 3 ;
+    emp:esObligatorio true .
+
+emp:requerimiento004 a emp:RequerimientoDeCompetencia ;
+    emp:especificaCompetencia emp:competenciaDiseno ;
+    emp:nivelEsperado 4 ;
+    emp:esObligatorio false .
+
+emp:requerimiento005 a emp:RequerimientoDeCompetencia ;
+    emp:especificaCompetencia emp:competenciaGestion ;
+    emp:nivelEsperado 3 ;
+    emp:esObligatorio true .
+
+emp:explicacion001 a emp:Explicacion ;
+    emp:descripcion "El perfil registra experiencia de desarrollo backend y una evaluación de Java alineada con el nivel requerido." ;
+    emp:utilizaEvidencia emp:ranking001, emp:requerimiento001 .
+
+emp:explicacion002 a emp:Explicacion ;
+    emp:descripcion "La formación en matemáticas aplicadas y la evaluación de Python respaldan la recomendación de explorar recursos de análisis de datos." ;
+    emp:utilizaEvidencia emp:ranking002, emp:requerimiento002, emp:recursoMentoria001 .
+
+emp:explicacion003 a emp:Explicacion ;
+    emp:descripcion "La evaluación ficticia de infraestructura cloud es 3 de 5 y coincide con el nivel requerido; se sugiere continuar practicándola." ;
+    emp:utilizaEvidencia emp:ranking003, emp:requerimiento003 .
+
+emp:explicacion004 a emp:Explicacion ;
+    emp:descripcion "La experiencia en diseño de interfaces y la evaluación asociada sustentan la recomendación de documentar un proyecto en el perfil." ;
+    emp:utilizaEvidencia emp:ranking004, emp:requerimiento004 .
+
+emp:explicacion005 a emp:Explicacion ;
+    emp:descripcion "La experiencia de coordinación y la evaluación de gestión de proyectos sustentan la sugerencia de revisar los requisitos de la vacante." ;
+    emp:utilizaEvidencia emp:ranking005, emp:requerimiento005 .
+
+emp:recomendacion001 a emp:Recomendacion ;
+    emp:tipoRecomendacion emp:ofertaCompatible ;
+    emp:fechaCreacion "2025-06-01T10:00:00Z"^^xsd:dateTime ;
+    emp:versionModelo "ejemplo-sintetico-1.0" ;
+    emp:recomiendaCandidato emp:candidato001 ;
+    emp:recomiendaOferta emp:oferta001 ;
+    emp:tieneExplicacion emp:explicacion001 .
+
+emp:recomendacion002 a emp:Recomendacion ;
+    emp:tipoRecomendacion emp:recursoDeAprendizaje ;
+    emp:fechaCreacion "2025-06-02T10:00:00Z"^^xsd:dateTime ;
+    emp:versionModelo "ejemplo-sintetico-1.0" ;
+    emp:recomiendaCandidato emp:candidato002 ;
+    emp:recomiendaOferta emp:oferta002 ;
+    emp:accionRecomendada "Explorar un recurso formativo sintético de análisis de datos." ;
+    emp:tieneExplicacion emp:explicacion002 .
+
+emp:recomendacion003 a emp:Recomendacion ;
+    emp:tipoRecomendacion emp:competenciaPorDesarrollar ;
+    emp:fechaCreacion "2025-06-03T10:00:00Z"^^xsd:dateTime ;
+    emp:versionModelo "ejemplo-sintetico-1.0" ;
+    emp:recomiendaCandidato emp:candidato003 ;
+    emp:recomiendaOferta emp:oferta003 ;
+    emp:accionRecomendada "Considerar práctica adicional en infraestructura cloud." ;
+    emp:tieneExplicacion emp:explicacion003 .
+
+emp:recomendacion004 a emp:Recomendacion ;
+    emp:tipoRecomendacion emp:mejoraDePerfil ;
+    emp:fechaCreacion "2025-06-04T10:00:00Z"^^xsd:dateTime ;
+    emp:versionModelo "ejemplo-sintetico-1.0" ;
+    emp:recomiendaCandidato emp:candidato004 ;
+    emp:recomiendaOferta emp:oferta004 ;
+    emp:accionRecomendada "Añadir un proyecto sintético de diseño al perfil." ;
+    emp:tieneExplicacion emp:explicacion004 .
+
+emp:recomendacion005 a emp:Recomendacion ;
+    emp:tipoRecomendacion emp:siguienteAccionSugerida ;
+    emp:fechaCreacion "2025-06-05T10:00:00Z"^^xsd:dateTime ;
+    emp:versionModelo "ejemplo-sintetico-1.0" ;
+    emp:recomiendaCandidato emp:candidato005 ;
+    emp:recomiendaOferta emp:oferta005 ;
+    emp:accionRecomendada "Revisar los requerimientos publicados y los recursos de desarrollo disponibles." ;
+    emp:tieneExplicacion emp:explicacion005 .
+
+emp:candidato006 a emp:Candidato ;
+    emp:identificador "candidate-synthetic-006" ;
+    emp:nombre "Lucía Beatriz Herrera Campos" ;
+    emp:tieneEducacion emp:educacion006 ;
+    emp:tieneExperienciaLaboral emp:experiencia006 ;
+    emp:poseeCompetencia emp:competenciaInvestigacionSocial ;
+    emp:tieneHabilidadSuave emp:habilidadEntrevista ;
+    emp:tieneRanking emp:ranking006 ;
+    emp:tieneTrayectoria emp:trayectoria006 .
+emp:educacion006 a emp:Educacion ;
+    emp:nombre "Licenciatura en Sociología" ;
+    emp:fechaInicio "2016-08-01"^^xsd:date ;
+    emp:fechaFin "2020-06-30"^^xsd:date .
+emp:experiencia006 a emp:ExperienciaLaboral ;
+    emp:nombre "Asistente de investigación en Centro de Estudios Comunitarios de Occidente" ;
+    emp:fechaInicio "2020-08-01"^^xsd:date ;
+    emp:fechaFin "2023-12-31"^^xsd:date .
+emp:trayectoria006 a emp:TrayectoriaLaboral ; emp:contieneEtapa emp:etapa006 .
+emp:etapa006 a emp:EtapaEnTrayectoriaLaboral ;
+    emp:etapaDeEducacion emp:educacion006 ;
+    emp:etapaDeExperiencia emp:experiencia006 .
+emp:ranking006 a emp:RankingDeCompetencia ;
+    emp:evaluaCompetencia emp:competenciaInvestigacionSocial ;
+    emp:puntuacion 4 ;
+    emp:escala "https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#escalaCompetencia1a5"^^xsd:anyURI ;
+    emp:fechaEvaluacion "2025-02-01"^^xsd:date ;
+    emp:fuente "https://example.org/synthetic-assessments/006"^^xsd:anyURI ;
+    emp:metodoEvaluacion "Diseño de investigación social ficticio" .
+
+emp:candidato007 a emp:Candidato ;
+    emp:identificador "candidate-synthetic-007" ;
+    emp:nombre "Ricardo Emmanuel Ponce Aguilar" ;
+    emp:tieneEducacion emp:educacion007 ;
+    emp:tieneExperienciaLaboral emp:experiencia007 ;
+    emp:poseeCompetencia emp:competenciaAnalisisPolitico ;
+    emp:tieneHabilidadSuave emp:habilidadRedaccion ;
+    emp:tieneRanking emp:ranking007 ;
+    emp:tieneTrayectoria emp:trayectoria007 .
+emp:educacion007 a emp:Educacion ;
+    emp:nombre "Licenciatura en Ciencias Políticas y Administración Pública" ;
+    emp:fechaInicio "2015-08-01"^^xsd:date ;
+    emp:fechaFin "2019-06-30"^^xsd:date .
+emp:experiencia007 a emp:ExperienciaLaboral ;
+    emp:nombre "Analista de políticas públicas en Observatorio Cívico Jalisciense" ;
+    emp:fechaInicio "2019-09-01"^^xsd:date ;
+    emp:fechaFin "2023-06-30"^^xsd:date .
+emp:trayectoria007 a emp:TrayectoriaLaboral ; emp:contieneEtapa emp:etapa007 .
+emp:etapa007 a emp:EtapaEnTrayectoriaLaboral ;
+    emp:etapaDeEducacion emp:educacion007 ;
+    emp:etapaDeExperiencia emp:experiencia007 .
+emp:ranking007 a emp:RankingDeCompetencia ;
+    emp:evaluaCompetencia emp:competenciaAnalisisPolitico ;
+    emp:puntuacion 5 ;
+    emp:escala "https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#escalaCompetencia1a5"^^xsd:anyURI ;
+    emp:fechaEvaluacion "2025-02-02"^^xsd:date ;
+    emp:fuente "https://example.org/synthetic-assessments/007"^^xsd:anyURI ;
+    emp:metodoEvaluacion "Análisis comparado de políticas ficticio" .
+
+emp:candidato008 a emp:Candidato ;
+    emp:identificador "candidate-synthetic-008" ;
+    emp:nombre "Ana Gabriela Villaseñor Medina" ;
+    emp:tieneEducacion emp:educacion008 ;
+    emp:tieneExperienciaLaboral emp:experiencia008 ;
+    emp:poseeCompetencia emp:competenciaInvestigacionHistorica ;
+    emp:tieneHabilidadSuave emp:habilidadArchivo ;
+    emp:tieneRanking emp:ranking008 ;
+    emp:tieneTrayectoria emp:trayectoria008 .
+emp:educacion008 a emp:Educacion ;
+    emp:nombre "Licenciatura en Historia" ;
+    emp:fechaInicio "2017-08-01"^^xsd:date ;
+    emp:fechaFin "2021-06-30"^^xsd:date .
+emp:experiencia008 a emp:ExperienciaLaboral ;
+    emp:nombre "Catalogadora en Archivo Histórico Regional de Jalisco" ;
+    emp:fechaInicio "2021-08-01"^^xsd:date ;
+    emp:fechaFin "2024-12-31"^^xsd:date .
+emp:trayectoria008 a emp:TrayectoriaLaboral ; emp:contieneEtapa emp:etapa008 .
+emp:etapa008 a emp:EtapaEnTrayectoriaLaboral ;
+    emp:etapaDeEducacion emp:educacion008 ;
+    emp:etapaDeExperiencia emp:experiencia008 .
+emp:ranking008 a emp:RankingDeCompetencia ;
+    emp:evaluaCompetencia emp:competenciaInvestigacionHistorica ;
+    emp:puntuacion 4 ;
+    emp:escala "https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#escalaCompetencia1a5"^^xsd:anyURI ;
+    emp:fechaEvaluacion "2025-02-03"^^xsd:date ;
+    emp:fuente "https://example.org/synthetic-assessments/008"^^xsd:anyURI ;
+    emp:metodoEvaluacion "Análisis documental ficticio" .
+
+emp:candidato009 a emp:Candidato ;
+    emp:identificador "candidate-synthetic-009" ;
+    emp:nombre "Carlos Alberto Jiménez Neri" ;
+    emp:tieneEducacion emp:educacion009 ;
+    emp:tieneExperienciaLaboral emp:experiencia009 ;
+    emp:poseeCompetencia emp:competenciaInvestigacionSocial ;
+    emp:tieneHabilidadSuave emp:habilidadEntrevista ;
+    emp:tieneRanking emp:ranking009 ;
+    emp:tieneTrayectoria emp:trayectoria009 .
+emp:educacion009 a emp:Educacion ;
+    emp:nombre "Licenciatura en Antropología" ;
+    emp:fechaInicio "2014-08-01"^^xsd:date ;
+    emp:fechaFin "2018-06-30"^^xsd:date .
+emp:experiencia009 a emp:ExperienciaLaboral ;
+    emp:nombre "Investigador de campo en Fundación Territorios y Culturas" ;
+    emp:fechaInicio "2018-09-01"^^xsd:date ;
+    emp:fechaFin "2022-12-31"^^xsd:date .
+emp:trayectoria009 a emp:TrayectoriaLaboral ; emp:contieneEtapa emp:etapa009 .
+emp:etapa009 a emp:EtapaEnTrayectoriaLaboral ;
+    emp:etapaDeEducacion emp:educacion009 ;
+    emp:etapaDeExperiencia emp:experiencia009 .
+emp:ranking009 a emp:RankingDeCompetencia ;
+    emp:evaluaCompetencia emp:competenciaInvestigacionSocial ;
+    emp:puntuacion 4 ;
+    emp:escala "https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#escalaCompetencia1a5"^^xsd:anyURI ;
+    emp:fechaEvaluacion "2025-02-04"^^xsd:date ;
+    emp:fuente "https://example.org/synthetic-assessments/009"^^xsd:anyURI ;
+    emp:metodoEvaluacion "Registro de observación de campo ficticio" .
+
+emp:candidato010 a emp:Candidato ;
+    emp:identificador "candidate-synthetic-010" ;
+    emp:nombre "Daniela Fernanda Cruz Orozco" ;
+    emp:tieneEducacion emp:educacion010 ;
+    emp:tieneExperienciaLaboral emp:experiencia010 ;
+    emp:poseeCompetencia emp:competenciaGestionCultural ;
+    emp:tieneHabilidadSuave emp:habilidadGestion ;
+    emp:tieneRanking emp:ranking010 ;
+    emp:tieneTrayectoria emp:trayectoria010 .
+emp:educacion010 a emp:Educacion ;
+    emp:nombre "Licenciatura en Gestión Cultural" ;
+    emp:fechaInicio "2016-08-01"^^xsd:date ;
+    emp:fechaFin "2020-06-30"^^xsd:date .
+emp:experiencia010 a emp:ExperienciaLaboral ;
+    emp:nombre "Coordinadora de proyectos culturales en Casa Cultural La Estación" ;
+    emp:fechaInicio "2020-09-01"^^xsd:date ;
+    emp:fechaFin "2024-03-31"^^xsd:date .
+emp:trayectoria010 a emp:TrayectoriaLaboral ; emp:contieneEtapa emp:etapa010 .
+emp:etapa010 a emp:EtapaEnTrayectoriaLaboral ;
+    emp:etapaDeEducacion emp:educacion010 ;
+    emp:etapaDeExperiencia emp:experiencia010 .
+emp:ranking010 a emp:RankingDeCompetencia ;
+    emp:evaluaCompetencia emp:competenciaGestionCultural ;
+    emp:puntuacion 5 ;
+    emp:escala "https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#escalaCompetencia1a5"^^xsd:anyURI ;
+    emp:fechaEvaluacion "2025-02-05"^^xsd:date ;
+    emp:fuente "https://example.org/synthetic-assessments/010"^^xsd:anyURI ;
+    emp:metodoEvaluacion "Planeación de proyecto cultural ficticio" .
+
+emp:candidato011 a emp:Candidato ;
+    emp:identificador "candidate-synthetic-011" ;
+    emp:nombre "José Manuel Ríos Salcedo" ;
+    emp:tieneEducacion emp:educacion011 ;
+    emp:tieneExperienciaLaboral emp:experiencia011 ;
+    emp:poseeCompetencia emp:competenciaInvestigacionHistorica ;
+    emp:tieneHabilidadSuave emp:habilidadRedaccion ;
+    emp:tieneRanking emp:ranking011 ;
+    emp:tieneTrayectoria emp:trayectoria011 .
+emp:educacion011 a emp:Educacion ;
+    emp:nombre "Licenciatura en Historia del Arte" ;
+    emp:fechaInicio "2013-08-01"^^xsd:date ;
+    emp:fechaFin "2017-06-30"^^xsd:date .
+emp:experiencia011 a emp:ExperienciaLaboral ;
+    emp:nombre "Investigador auxiliar en Museo Regional de Occidente" ;
+    emp:fechaInicio "2017-08-01"^^xsd:date ;
+    emp:fechaFin "2021-12-31"^^xsd:date .
+emp:trayectoria011 a emp:TrayectoriaLaboral ; emp:contieneEtapa emp:etapa011 .
+emp:etapa011 a emp:EtapaEnTrayectoriaLaboral ;
+    emp:etapaDeEducacion emp:educacion011 ;
+    emp:etapaDeExperiencia emp:experiencia011 .
+emp:ranking011 a emp:RankingDeCompetencia ;
+    emp:evaluaCompetencia emp:competenciaInvestigacionHistorica ;
+    emp:puntuacion 4 ;
+    emp:escala "https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#escalaCompetencia1a5"^^xsd:anyURI ;
+    emp:fechaEvaluacion "2025-02-06"^^xsd:date ;
+    emp:fuente "https://example.org/synthetic-assessments/011"^^xsd:anyURI ;
+    emp:metodoEvaluacion "Análisis de fuentes históricas ficticio" .
+
+emp:candidato012 a emp:Candidato ;
+    emp:identificador "candidate-synthetic-012" ;
+    emp:nombre "Paola Andrea Cervantes Mora" ;
+    emp:tieneEducacion emp:educacion012 ;
+    emp:tieneExperienciaLaboral emp:experiencia012 ;
+    emp:poseeCompetencia emp:competenciaAnalisisPolitico ;
+    emp:tieneHabilidadSuave emp:habilidadRedaccion ;
+    emp:tieneRanking emp:ranking012 ;
+    emp:tieneTrayectoria emp:trayectoria012 .
+emp:educacion012 a emp:Educacion ;
+    emp:nombre "Licenciatura en Relaciones Internacionales" ;
+    emp:fechaInicio "2017-08-01"^^xsd:date ;
+    emp:fechaFin "2021-06-30"^^xsd:date .
+emp:experiencia012 a emp:ExperienciaLaboral ;
+    emp:nombre "Asistente de investigación en Instituto de Asuntos Públicos del Pacífico" ;
+    emp:fechaInicio "2021-08-01"^^xsd:date ;
+    emp:fechaFin "2024-06-30"^^xsd:date .
+emp:trayectoria012 a emp:TrayectoriaLaboral ; emp:contieneEtapa emp:etapa012 .
+emp:etapa012 a emp:EtapaEnTrayectoriaLaboral ;
+    emp:etapaDeEducacion emp:educacion012 ;
+    emp:etapaDeExperiencia emp:experiencia012 .
+emp:ranking012 a emp:RankingDeCompetencia ;
+    emp:evaluaCompetencia emp:competenciaAnalisisPolitico ;
+    emp:puntuacion 4 ;
+    emp:escala "https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#escalaCompetencia1a5"^^xsd:anyURI ;
+    emp:fechaEvaluacion "2025-02-07"^^xsd:date ;
+    emp:fuente "https://example.org/synthetic-assessments/012"^^xsd:anyURI ;
+    emp:metodoEvaluacion "Análisis de coyuntura ficticio" .
+
+emp:candidato013 a emp:Candidato ;
+    emp:identificador "candidate-synthetic-013" ;
+    emp:nombre "Miguel Ángel Sandoval Paredes" ;
+    emp:tieneEducacion emp:educacion013 ;
+    emp:tieneExperienciaLaboral emp:experiencia013 ;
+    emp:poseeCompetencia emp:competenciaInvestigacionSocial ;
+    emp:tieneHabilidadSuave emp:habilidadEntrevista ;
+    emp:tieneRanking emp:ranking013 ;
+    emp:tieneTrayectoria emp:trayectoria013 .
+emp:educacion013 a emp:Educacion ;
+    emp:nombre "Licenciatura en Geografía" ;
+    emp:fechaInicio "2015-08-01"^^xsd:date ;
+    emp:fechaFin "2019-06-30"^^xsd:date .
+emp:experiencia013 a emp:ExperienciaLaboral ;
+    emp:nombre "Especialista en análisis territorial en Planeación Metropolitana del Sur" ;
+    emp:fechaInicio "2019-09-01"^^xsd:date ;
+    emp:fechaFin "2023-12-31"^^xsd:date .
+emp:trayectoria013 a emp:TrayectoriaLaboral ; emp:contieneEtapa emp:etapa013 .
+emp:etapa013 a emp:EtapaEnTrayectoriaLaboral ;
+    emp:etapaDeEducacion emp:educacion013 ;
+    emp:etapaDeExperiencia emp:experiencia013 .
+emp:ranking013 a emp:RankingDeCompetencia ;
+    emp:evaluaCompetencia emp:competenciaInvestigacionSocial ;
+    emp:puntuacion 3 ;
+    emp:escala "https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#escalaCompetencia1a5"^^xsd:anyURI ;
+    emp:fechaEvaluacion "2025-02-08"^^xsd:date ;
+    emp:fuente "https://example.org/synthetic-assessments/013"^^xsd:anyURI ;
+    emp:metodoEvaluacion "Análisis territorial de muestra ficticia" .
+
+emp:candidato014 a emp:Candidato ;
+    emp:identificador "candidate-synthetic-014" ;
+    emp:nombre "Ximena Isabel Navarro Beltrán" ;
+    emp:tieneEducacion emp:educacion014 ;
+    emp:tieneExperienciaLaboral emp:experiencia014 ;
+    emp:poseeCompetencia emp:competenciaInvestigacionSocial ;
+    emp:tieneHabilidadSuave emp:habilidadEntrevista ;
+    emp:tieneRanking emp:ranking014 ;
+    emp:tieneTrayectoria emp:trayectoria014 .
+emp:educacion014 a emp:Educacion ;
+    emp:nombre "Licenciatura en Trabajo Social" ;
+    emp:fechaInicio "2016-08-01"^^xsd:date ;
+    emp:fechaFin "2020-06-30"^^xsd:date .
+emp:experiencia014 a emp:ExperienciaLaboral ;
+    emp:nombre "Gestora comunitaria en Asociación Horizonte Comunitario" ;
+    emp:fechaInicio "2020-08-01"^^xsd:date ;
+    emp:fechaFin "2024-02-29"^^xsd:date .
+emp:trayectoria014 a emp:TrayectoriaLaboral ; emp:contieneEtapa emp:etapa014 .
+emp:etapa014 a emp:EtapaEnTrayectoriaLaboral ;
+    emp:etapaDeEducacion emp:educacion014 ;
+    emp:etapaDeExperiencia emp:experiencia014 .
+emp:ranking014 a emp:RankingDeCompetencia ;
+    emp:evaluaCompetencia emp:competenciaInvestigacionSocial ;
+    emp:puntuacion 5 ;
+    emp:escala "https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#escalaCompetencia1a5"^^xsd:anyURI ;
+    emp:fechaEvaluacion "2025-02-09"^^xsd:date ;
+    emp:fuente "https://example.org/synthetic-assessments/014"^^xsd:anyURI ;
+    emp:metodoEvaluacion "Evaluación de intervención comunitaria ficticia" .
+
+emp:candidato015 a emp:Candidato ;
+    emp:identificador "candidate-synthetic-015" ;
+    emp:nombre "Sergio Iván Cárdenas Luna" ;
+    emp:tieneEducacion emp:educacion015 ;
+    emp:tieneExperienciaLaboral emp:experiencia015 ;
+    emp:poseeCompetencia emp:competenciaGestionCultural ;
+    emp:tieneHabilidadSuave emp:habilidadGestion ;
+    emp:tieneRanking emp:ranking015 ;
+    emp:tieneTrayectoria emp:trayectoria015 .
+emp:educacion015 a emp:Educacion ;
+    emp:nombre "Licenciatura en Comunicación Pública" ;
+    emp:fechaInicio "2014-08-01"^^xsd:date ;
+    emp:fechaFin "2018-06-30"^^xsd:date .
+emp:experiencia015 a emp:ExperienciaLaboral ;
+    emp:nombre "Coordinador de comunicación en Fundación Puentes Ciudadanos" ;
+    emp:fechaInicio "2018-09-01"^^xsd:date ;
+    emp:fechaFin "2022-12-31"^^xsd:date .
+emp:trayectoria015 a emp:TrayectoriaLaboral ; emp:contieneEtapa emp:etapa015 .
+emp:etapa015 a emp:EtapaEnTrayectoriaLaboral ;
+    emp:etapaDeEducacion emp:educacion015 ;
+    emp:etapaDeExperiencia emp:experiencia015 .
+emp:ranking015 a emp:RankingDeCompetencia ;
+    emp:evaluaCompetencia emp:competenciaGestionCultural ;
+    emp:puntuacion 4 ;
+    emp:escala "https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#escalaCompetencia1a5"^^xsd:anyURI ;
+    emp:fechaEvaluacion "2025-02-10"^^xsd:date ;
+    emp:fuente "https://example.org/synthetic-assessments/015"^^xsd:anyURI ;
+    emp:metodoEvaluacion "Campaña de comunicación pública ficticia" .
+
+emp:candidato016 a emp:Candidato ;
+    emp:identificador "candidate-synthetic-016" ;
+    emp:nombre "Rebeca Alejandra Murillo Esquivel" ;
+    emp:tieneEducacion emp:educacion016 ;
+    emp:tieneExperienciaLaboral emp:experiencia016 ;
+    emp:poseeCompetencia emp:competenciaInvestigacionHistorica ;
+    emp:tieneHabilidadSuave emp:habilidadArchivo ;
+    emp:tieneRanking emp:ranking016 ;
+    emp:tieneTrayectoria emp:trayectoria016 .
+emp:educacion016 a emp:Educacion ;
+    emp:nombre "Licenciatura en Arqueología" ;
+    emp:fechaInicio "2015-08-01"^^xsd:date ;
+    emp:fechaFin "2019-06-30"^^xsd:date .
+emp:experiencia016 a emp:ExperienciaLaboral ;
+    emp:nombre "Asistente de investigación arqueológica en Proyecto Cuenca Verde" ;
+    emp:fechaInicio "2019-08-01"^^xsd:date ;
+    emp:fechaFin "2023-12-31"^^xsd:date .
+emp:trayectoria016 a emp:TrayectoriaLaboral ; emp:contieneEtapa emp:etapa016 .
+emp:etapa016 a emp:EtapaEnTrayectoriaLaboral ;
+    emp:etapaDeEducacion emp:educacion016 ;
+    emp:etapaDeExperiencia emp:experiencia016 .
+emp:ranking016 a emp:RankingDeCompetencia ;
+    emp:evaluaCompetencia emp:competenciaInvestigacionHistorica ;
+    emp:puntuacion 4 ;
+    emp:escala "https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#escalaCompetencia1a5"^^xsd:anyURI ;
+    emp:fechaEvaluacion "2025-02-11"^^xsd:date ;
+    emp:fuente "https://example.org/synthetic-assessments/016"^^xsd:anyURI ;
+    emp:metodoEvaluacion "Registro de excavación ficticio" .
+
+emp:candidato017 a emp:Candidato ;
+    emp:identificador "candidate-synthetic-017" ;
+    emp:nombre "Emilio Francisco Olvera Tapia" ;
+    emp:tieneEducacion emp:educacion017 ;
+    emp:tieneExperienciaLaboral emp:experiencia017 ;
+    emp:poseeCompetencia emp:competenciaAnalisisPolitico ;
+    emp:tieneHabilidadSuave emp:habilidadRedaccion ;
+    emp:tieneRanking emp:ranking017 ;
+    emp:tieneTrayectoria emp:trayectoria017 .
+emp:educacion017 a emp:Educacion ;
+    emp:nombre "Licenciatura en Economía" ;
+    emp:fechaInicio "2016-08-01"^^xsd:date ;
+    emp:fechaFin "2020-06-30"^^xsd:date .
+emp:experiencia017 a emp:ExperienciaLaboral ;
+    emp:nombre "Analista de evaluación social en Consultoría Pública del Centro" ;
+    emp:fechaInicio "2020-08-01"^^xsd:date ;
+    emp:fechaFin "2024-06-30"^^xsd:date .
+emp:trayectoria017 a emp:TrayectoriaLaboral ; emp:contieneEtapa emp:etapa017 .
+emp:etapa017 a emp:EtapaEnTrayectoriaLaboral ;
+    emp:etapaDeEducacion emp:educacion017 ;
+    emp:etapaDeExperiencia emp:experiencia017 .
+emp:ranking017 a emp:RankingDeCompetencia ;
+    emp:evaluaCompetencia emp:competenciaAnalisisPolitico ;
+    emp:puntuacion 4 ;
+    emp:escala "https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#escalaCompetencia1a5"^^xsd:anyURI ;
+    emp:fechaEvaluacion "2025-02-12"^^xsd:date ;
+    emp:fuente "https://example.org/synthetic-assessments/017"^^xsd:anyURI ;
+    emp:metodoEvaluacion "Evaluación de impacto social ficticia" .
+
+emp:candidato018 a emp:Candidato ;
+    emp:identificador "candidate-synthetic-018" ;
+    emp:nombre "Mónica Patricia Zúñiga Robles" ;
+    emp:tieneEducacion emp:educacion018 ;
+    emp:tieneExperienciaLaboral emp:experiencia018 ;
+    emp:poseeCompetencia emp:competenciaGestionCultural ;
+    emp:tieneHabilidadSuave emp:habilidadGestion ;
+    emp:tieneRanking emp:ranking018 ;
+    emp:tieneTrayectoria emp:trayectoria018 .
+emp:educacion018 a emp:Educacion ;
+    emp:nombre "Licenciatura en Gestión y Desarrollo Turístico" ;
+    emp:fechaInicio "2017-08-01"^^xsd:date ;
+    emp:fechaFin "2021-06-30"^^xsd:date .
+emp:experiencia018 a emp:ExperienciaLaboral ;
+    emp:nombre "Promotora de turismo comunitario en Ruta de los Pueblos A.C." ;
+    emp:fechaInicio "2021-08-01"^^xsd:date ;
+    emp:fechaFin "2024-12-31"^^xsd:date .
+emp:trayectoria018 a emp:TrayectoriaLaboral ; emp:contieneEtapa emp:etapa018 .
+emp:etapa018 a emp:EtapaEnTrayectoriaLaboral ;
+    emp:etapaDeEducacion emp:educacion018 ;
+    emp:etapaDeExperiencia emp:experiencia018 .
+emp:ranking018 a emp:RankingDeCompetencia ;
+    emp:evaluaCompetencia emp:competenciaGestionCultural ;
+    emp:puntuacion 3 ;
+    emp:escala "https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#escalaCompetencia1a5"^^xsd:anyURI ;
+    emp:fechaEvaluacion "2025-02-13"^^xsd:date ;
+    emp:fuente "https://example.org/synthetic-assessments/018"^^xsd:anyURI ;
+    emp:metodoEvaluacion "Diseño de recorrido comunitario ficticio" .
+
+emp:candidato019 a emp:Candidato ;
+    emp:identificador "candidate-synthetic-019" ;
+    emp:nombre "Héctor Daniel Valdés Castañeda" ;
+    emp:tieneEducacion emp:educacion019 ;
+    emp:tieneExperienciaLaboral emp:experiencia019 ;
+    emp:poseeCompetencia emp:competenciaInvestigacionSocial ;
+    emp:tieneHabilidadSuave emp:habilidadEntrevista ;
+    emp:tieneRanking emp:ranking019 ;
+    emp:tieneTrayectoria emp:trayectoria019 .
+emp:educacion019 a emp:Educacion ;
+    emp:nombre "Licenciatura en Sociología" ;
+    emp:fechaInicio "2014-08-01"^^xsd:date ;
+    emp:fechaFin "2018-06-30"^^xsd:date .
+emp:experiencia019 a emp:ExperienciaLaboral ;
+    emp:nombre "Consultor de diagnóstico comunitario en Desarrollo Local del Valle" ;
+    emp:fechaInicio "2018-08-01"^^xsd:date ;
+    emp:fechaFin "2022-12-31"^^xsd:date .
+emp:trayectoria019 a emp:TrayectoriaLaboral ; emp:contieneEtapa emp:etapa019 .
+emp:etapa019 a emp:EtapaEnTrayectoriaLaboral ;
+    emp:etapaDeEducacion emp:educacion019 ;
+    emp:etapaDeExperiencia emp:experiencia019 .
+emp:ranking019 a emp:RankingDeCompetencia ;
+    emp:evaluaCompetencia emp:competenciaInvestigacionSocial ;
+    emp:puntuacion 4 ;
+    emp:escala "https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#escalaCompetencia1a5"^^xsd:anyURI ;
+    emp:fechaEvaluacion "2025-02-14"^^xsd:date ;
+    emp:fuente "https://example.org/synthetic-assessments/019"^^xsd:anyURI ;
+    emp:metodoEvaluacion "Informe de diagnóstico social ficticio" .
+
+emp:candidato020 a emp:Candidato ;
+    emp:identificador "candidate-synthetic-020" ;
+    emp:nombre "Natalia Isabel Esparza Contreras" ;
+    emp:tieneEducacion emp:educacion020 ;
+    emp:tieneExperienciaLaboral emp:experiencia020 ;
+    emp:poseeCompetencia emp:competenciaAnalisisPolitico ;
+    emp:tieneHabilidadSuave emp:habilidadRedaccion ;
+    emp:tieneRanking emp:ranking020 ;
+    emp:tieneTrayectoria emp:trayectoria020 .
+emp:educacion020 a emp:Educacion ;
+    emp:nombre "Licenciatura en Antropología Social" ;
+    emp:fechaInicio "2016-08-01"^^xsd:date ;
+    emp:fechaFin "2020-06-30"^^xsd:date .
+emp:experiencia020 a emp:ExperienciaLaboral ;
+    emp:nombre "Enlace de participación ciudadana en Iniciativa Barrios Abiertos" ;
+    emp:fechaInicio "2020-08-01"^^xsd:date ;
+    emp:fechaFin "2024-12-31"^^xsd:date .
+emp:trayectoria020 a emp:TrayectoriaLaboral ; emp:contieneEtapa emp:etapa020 .
+emp:etapa020 a emp:EtapaEnTrayectoriaLaboral ;
+    emp:etapaDeEducacion emp:educacion020 ;
+    emp:etapaDeExperiencia emp:experiencia020 .
+emp:ranking020 a emp:RankingDeCompetencia ;
+    emp:evaluaCompetencia emp:competenciaAnalisisPolitico ;
+    emp:puntuacion 4 ;
+    emp:escala "https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#escalaCompetencia1a5"^^xsd:anyURI ;
+    emp:fechaEvaluacion "2025-02-15"^^xsd:date ;
+    emp:fuente "https://example.org/synthetic-assessments/020"^^xsd:anyURI ;
+    emp:metodoEvaluacion "Sistematización de consulta ciudadana ficticia" .
+
+emp:competenciaInvestigacionSocial a emp:Competencia ;
+    emp:nombre "Investigación social cualitativa" .
+emp:competenciaAnalisisPolitico a emp:Competencia ;
+    emp:nombre "Análisis de políticas públicas" .
+emp:competenciaInvestigacionHistorica a emp:Competencia ;
+    emp:nombre "Investigación histórica y documental" .
+emp:competenciaGestionCultural a emp:Competencia ;
+    emp:nombre "Gestión de proyectos culturales y comunitarios" .
+emp:habilidadEntrevista a emp:HabilidadSuave ;
+    emp:nombre "Entrevista y escucha activa" .
+emp:habilidadRedaccion a emp:HabilidadSuave ;
+    emp:nombre "Redacción de informes y síntesis" .
+emp:habilidadArchivo a emp:HabilidadSuave ;
+    emp:nombre "Organización y catalogación documental" .
+emp:habilidadGestion a emp:HabilidadSuave ;
+    emp:nombre "Coordinación de proyectos y trabajo colaborativo" .

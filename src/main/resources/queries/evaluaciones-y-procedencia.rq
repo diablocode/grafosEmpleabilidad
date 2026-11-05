@@ -1,0 +1,16 @@
+PREFIX emp: <https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#>
+
+SELECT DISTINCT ?candidato ?nombreCandidato ?competencia ?puntuacion
+                ?escala ?fuente ?metodo ?fecha
+WHERE {
+    ?candidato a emp:Candidato ;
+        emp:nombre ?nombreCandidato ;
+        emp:tieneRanking ?ranking .
+    ?ranking emp:evaluaCompetencia ?competencia ;
+        emp:puntuacion ?puntuacion ;
+        emp:escala ?escala ;
+        emp:fuente ?fuente ;
+        emp:metodoEvaluacion ?metodo ;
+        emp:fechaEvaluacion ?fecha .
+}
+ORDER BY ?nombreCandidato ?competencia

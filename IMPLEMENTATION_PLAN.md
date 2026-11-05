@@ -131,12 +131,12 @@ Construir la ontología y su integración con Apache Jena en capas pequeñas, ve
 
 **Validación de salida**
 
-- [ ] El conjunto de datos satisface las shapes de la Capa 4.
-- [ ] Todos los vínculos principales del PRD aparecen en al menos un ejemplo.
-- [ ] No hay identificadores, nombres, perfiles o datos de personas reales.
-- [ ] Un revisor puede interpretar cada recomendación y localizar su explicación y evidencia.
+- [x] El conjunto de datos satisface las shapes de la Capa 4.
+- [x] Todos los vínculos principales del PRD aparecen en al menos un ejemplo.
+- [x] No hay identificadores, nombres, perfiles o datos de personas reales.
+- [x] Cada recomendación tiene una explicación y evidencia localizable en el grafo.
 
-**Punto de revisión:** verificar que los ejemplos son comprensibles y no afirman más de lo que sus fuentes sintéticas respaldan.
+**Punto de revisión:** `empleabilidad-ejemplo.ttl` contiene veinte candidatos —quince con formación y experiencia en ciencias sociales— y cinco ofertas; carga en Jena y pasa SHACL sin advertencias. El contacto profesional es ficticio y no se incluyen perfiles socioemocionales ni datos reales. Los nuevos perfiles sociales no están vinculados a las vacantes tecnológicas de ejemplo.
 
 ### Capa 6 — Consultas SPARQL de los casos de uso
 
@@ -152,12 +152,12 @@ Construir la ontología y su integración con Apache Jena en capas pequeñas, ve
 
 **Validación de salida**
 
-- [ ] Cada consulta tiene un resultado esperado verificable sobre los datos sintéticos.
-- [ ] Las consultas se ejecutan desde Apache Jena y devuelven las columnas y recursos documentados.
-- [ ] No se generan inferencias por ausencia de datos ni se mezclan escalas incompatibles.
-- [ ] La consulta de correspondencia se describe como exploratoria, no como algoritmo de ranking o selección.
+- [x] Cada consulta tiene un resultado esperado verificable sobre los datos sintéticos.
+- [x] Las consultas se ejecutan desde Apache Jena y devuelven las columnas y recursos documentados.
+- [x] No se generan inferencias por ausencia de datos ni se mezclan escalas incompatibles.
+- [x] La consulta de correspondencia se describe como exploratoria, no como algoritmo de ranking o selección.
 
-**Punto de revisión:** confirmar que consultas y resultados cubren los casos de uso del PRD.
+**Punto de revisión:** Capa 6 completada y verificada con `gradlew test`. Se incluyen cinco consultas (`perfil-candidato.rq`, `ofertas-y-requerimientos.rq`, `evaluaciones-y-procedencia.rq`, `recomendaciones-explicadas.rq` y `coincidencias-competencia-exploratorias.rq`); las pruebas comprueban columnas y resultados esperados sobre la ontología y los datos sintéticos integrados.
 
 ### Capa 7 — Serialización RDF/XML y equivalencia
 

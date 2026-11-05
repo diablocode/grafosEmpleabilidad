@@ -1,0 +1,21 @@
+PREFIX emp: <https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT DISTINCT ?recomendacion ?candidato ?nombreCandidato ?oferta ?nombreOferta
+                ?tipo ?etiquetaTipo ?fecha ?versionModelo ?explicacion
+                ?descripcionExplicacion ?evidencia
+WHERE {
+    ?recomendacion a emp:Recomendacion ;
+        emp:recomiendaCandidato ?candidato ;
+        emp:recomiendaOferta ?oferta ;
+        emp:tipoRecomendacion ?tipo ;
+        emp:fechaCreacion ?fecha ;
+        emp:versionModelo ?versionModelo ;
+        emp:tieneExplicacion ?explicacion .
+    ?candidato emp:nombre ?nombreCandidato .
+    ?oferta emp:nombre ?nombreOferta .
+    ?tipo skos:prefLabel ?etiquetaTipo .
+    ?explicacion emp:utilizaEvidencia ?evidencia .
+    OPTIONAL { ?explicacion emp:descripcion ?descripcionExplicacion }
+}
+ORDER BY ?nombreCandidato ?nombreOferta ?evidencia
