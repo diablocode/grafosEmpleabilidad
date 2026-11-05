@@ -1,0 +1,336 @@
+@prefix emp: <https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+emp:CandidatoShape
+    a sh:NodeShape ;
+    sh:targetClass emp:Candidato ;
+    sh:property [
+        sh:path emp:identificador ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string ;
+        sh:minLength 1 ;
+        sh:message "El candidato debe tener un identificador opaco no vacío."@es
+    ] ;
+    sh:property [
+        sh:path emp:tieneEducacion ;
+        sh:class emp:Educacion ;
+        sh:severity sh:Violation
+    ] ;
+    sh:property [
+        sh:path emp:tieneExperienciaLaboral ;
+        sh:class emp:ExperienciaLaboral ;
+        sh:severity sh:Violation
+    ] ;
+    sh:property [
+        sh:path emp:poseeCompetencia ;
+        sh:class emp:Competencia ;
+        sh:severity sh:Violation
+    ] ;
+    sh:property [
+        sh:path emp:tieneHabilidad ;
+        sh:class emp:Habilidad ;
+        sh:severity sh:Violation
+    ] ;
+    sh:property [
+        sh:path emp:tieneHabilidadSuave ;
+        sh:class emp:HabilidadSuave ;
+        sh:severity sh:Violation
+    ] ;
+    sh:property [
+        sh:path emp:dominaLenguaje ;
+        sh:class emp:Lenguaje ;
+        sh:severity sh:Violation
+    ] ;
+    sh:property [
+        sh:path emp:tieneRanking ;
+        sh:class emp:RankingDeCompetencia ;
+        sh:severity sh:Violation
+    ] ;
+    sh:property [
+        sh:path emp:tienePerfilSocioemocional ;
+        sh:class emp:PerfilSocioemocional ;
+        sh:severity sh:Violation
+    ] ;
+    sh:property [
+        sh:path emp:conoceA ;
+        sh:class emp:RedSocial ;
+        sh:severity sh:Violation
+    ] ;
+    sh:property [
+        sh:path emp:tieneTrayectoria ;
+        sh:class emp:TrayectoriaLaboral ;
+        sh:severity sh:Violation
+    ] .
+
+emp:RankingDeCompetenciaShape
+    a sh:NodeShape ;
+    sh:targetClass emp:RankingDeCompetencia ;
+    sh:property [
+        sh:path emp:evaluaCompetencia ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class emp:Competencia ;
+        sh:message "El ranking debe evaluar exactamente una competencia."@es
+    ] ;
+    sh:property [
+        sh:path emp:puntuacion ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:integer ;
+        sh:minInclusive 1 ;
+        sh:maxInclusive 5 ;
+        sh:message "La puntuación debe ser un entero de 1 a 5."@es
+    ] ;
+    sh:property [
+        sh:path emp:escala ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:anyURI ;
+        sh:hasValue "https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#escalaCompetencia1a5"^^xsd:anyURI ;
+        sh:message "El ranking debe referenciar la escala de competencia de 1 a 5."@es
+    ] ;
+    sh:property [
+        sh:path emp:fechaEvaluacion ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:date ;
+        sh:message "El ranking debe registrar la fecha de evaluación."@es
+    ] ;
+    sh:property [
+        sh:path emp:fuente ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:anyURI ;
+        sh:message "El ranking debe identificar su fuente."@es
+    ] ;
+    sh:property [
+        sh:path emp:metodoEvaluacion ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string ;
+        sh:minLength 1 ;
+        sh:message "El ranking debe identificar el método de evaluación."@es
+    ] .
+
+emp:LenguajeShape
+    a sh:NodeShape ;
+    sh:targetClass emp:Lenguaje ;
+    sh:property [
+        sh:path emp:nivel ;
+        sh:maxCount 0 ;
+        sh:message "Usar el concepto controlado nivelMCER en lugar de un nivel textual libre."@es
+    ] ;
+    sh:or (
+        [
+            sh:property [
+                sh:path emp:nivelMCER ;
+                sh:maxCount 0
+            ]
+        ]
+        [
+            sh:property [
+                sh:path emp:nivelMCER ;
+                sh:minCount 1 ;
+                sh:maxCount 1 ;
+                sh:in (
+                    emp:nivelA1 emp:nivelA2 emp:nivelB1
+                    emp:nivelB2 emp:nivelC1 emp:nivelC2
+                )
+            ] ;
+            sh:property [
+                sh:path emp:escala ;
+                sh:minCount 1 ;
+                sh:maxCount 1 ;
+                sh:datatype xsd:anyURI ;
+                sh:hasValue "https://localhost:3030/diablocode/grafosEmpleabilidad/ontology/empleabilidad#escalaMCER"^^xsd:anyURI
+            ]
+        ]
+    ) ;
+    sh:message "Si se especifica un nivel de lenguaje, debe ser un nivel MCER A1-C2 y usar la escala MCER."@es .
+
+emp:RequerimientoDeCompetenciaShape
+    a sh:NodeShape ;
+    sh:targetClass emp:RequerimientoDeCompetencia ;
+    sh:property [
+        sh:path emp:especificaCompetencia ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class emp:Competencia ;
+        sh:message "El requerimiento debe especificar exactamente una competencia."@es
+    ] ;
+    sh:property [
+        sh:path emp:nivelEsperado ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:integer ;
+        sh:minInclusive 1 ;
+        sh:maxInclusive 5 ;
+        sh:message "El nivel esperado debe ser un entero de 1 a 5."@es
+    ] .
+
+emp:EmpleadorShape
+    a sh:NodeShape ;
+    sh:targetClass emp:Empleador ;
+    sh:property [
+        sh:path emp:identificador ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string ;
+        sh:minLength 1
+    ] ;
+    sh:property [
+        sh:path emp:nombre ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string ;
+        sh:minLength 1
+    ] .
+
+emp:OfertaLaboralShape
+    a sh:NodeShape ;
+    sh:targetClass emp:OfertaLaboral ;
+    sh:property [
+        sh:path emp:identificador ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string ;
+        sh:minLength 1
+    ] ;
+    sh:property [
+        sh:path emp:nombre ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string ;
+        sh:minLength 1
+    ] ;
+    sh:property [
+        sh:path emp:publicadoPor ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class emp:Empleador
+    ] ;
+    sh:property [
+        sh:path emp:fechaInicio ;
+        sh:datatype xsd:date
+    ] ;
+    sh:property [
+        sh:path emp:fechaFin ;
+        sh:datatype xsd:date
+    ] ;
+    sh:property [
+        sh:path emp:ubicacion ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "Si está disponible, registrar la ubicación de la oferta."@es
+    ] ;
+    sh:property [
+        sh:path emp:fechaInicio ;
+        sh:lessThanOrEquals emp:fechaFin ;
+        sh:severity sh:Violation ;
+        sh:message "La fecha de inicio de la oferta debe ser anterior o igual a su fecha de fin."@es
+    ] .
+
+emp:ExperienciaLaboralShape
+    a sh:NodeShape ;
+    sh:targetClass emp:ExperienciaLaboral ;
+    sh:property [
+        sh:path emp:fechaInicio ;
+        sh:datatype xsd:date
+    ] ;
+    sh:property [
+        sh:path emp:fechaFin ;
+        sh:datatype xsd:date
+    ] ;
+    sh:property [
+        sh:path emp:fechaInicio ;
+        sh:lessThanOrEquals emp:fechaFin ;
+        sh:message "La fecha de inicio de la experiencia debe ser anterior o igual a su fecha de fin."@es
+    ] .
+
+emp:EducacionShape
+    a sh:NodeShape ;
+    sh:targetClass emp:Educacion ;
+    sh:property [
+        sh:path emp:fechaInicio ;
+        sh:datatype xsd:date
+    ] ;
+    sh:property [
+        sh:path emp:fechaFin ;
+        sh:datatype xsd:date
+    ] ;
+    sh:property [
+        sh:path emp:fechaInicio ;
+        sh:lessThanOrEquals emp:fechaFin ;
+        sh:message "La fecha de inicio de la educación debe ser anterior o igual a su fecha de fin."@es
+    ] .
+
+emp:TrayectoriaLaboralShape
+    a sh:NodeShape ;
+    sh:targetClass emp:TrayectoriaLaboral ;
+    sh:property [
+        sh:path emp:contieneEtapa ;
+        sh:minCount 1 ;
+        sh:class emp:EtapaEnTrayectoriaLaboral ;
+        sh:message "La trayectoria debe contener al menos una etapa."@es
+    ] .
+
+emp:EtapaEnTrayectoriaLaboralShape
+    a sh:NodeShape ;
+    sh:targetClass emp:EtapaEnTrayectoriaLaboral ;
+    sh:or (
+        [ sh:property [ sh:path emp:etapaDeExperiencia ; sh:minCount 1 ; sh:class emp:ExperienciaLaboral ] ]
+        [ sh:property [ sh:path emp:etapaDeEducacion ; sh:minCount 1 ; sh:class emp:Educacion ] ]
+    ) ;
+    sh:message "La etapa debe contextualizar una experiencia laboral o una formación."@es .
+
+emp:ExplicacionShape
+    a sh:NodeShape ;
+    sh:targetClass emp:Explicacion ;
+    sh:property [
+        sh:path emp:utilizaEvidencia ;
+        sh:minCount 1 ;
+        sh:message "La explicación debe enlazar al menos una evidencia."@es
+    ] .
+
+emp:RecomendacionShape
+    a sh:NodeShape ;
+    sh:targetClass emp:Recomendacion ;
+    sh:property [
+        sh:path emp:tipoRecomendacion ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:in (
+            emp:ofertaCompatible
+            emp:competenciaPorDesarrollar
+            emp:recursoDeAprendizaje
+            emp:mejoraDePerfil
+            emp:siguienteAccionSugerida
+        ) ;
+        sh:message "La recomendación debe tener exactamente un tipo controlado."@es
+    ] ;
+    sh:property [
+        sh:path emp:fechaCreacion ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:dateTime
+    ] ;
+    sh:property [
+        sh:path emp:versionModelo ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string ;
+        sh:minLength 1
+    ] ;
+    sh:property [
+        sh:path emp:tieneExplicacion ;
+        sh:minCount 1 ;
+        sh:class emp:Explicacion ;
+        sh:message "La recomendación debe incluir una explicación."@es
+    ] ;
+    sh:or (
+        [ sh:property [ sh:path emp:recomiendaOferta ; sh:minCount 1 ; sh:class emp:OfertaLaboral ] ]
+        [ sh:property [ sh:path emp:accionRecomendada ; sh:minCount 1 ; sh:datatype xsd:string ; sh:minLength 1 ] ]
+    ) ;
+    sh:message "La recomendación debe señalar una oferta o describir una acción."@es .

@@ -79,11 +79,10 @@ class EmployabilityOntologyTest {
             Map.entry("fechaInicio", new String[] {"Thing", "date"}),
             Map.entry("fechaFin", new String[] {"Thing", "date"}),
             Map.entry("fechaEvaluacion", new String[] {"RankingDeCompetencia", "date"}),
-            Map.entry("puntuacion", new String[] {"Thing", "decimal"}),
+            Map.entry("puntuacion", new String[] {"Thing", "integer"}),
             Map.entry("escala", new String[] {"Thing", "anyURI"}),
             Map.entry("metodoEvaluacion", new String[] {"Thing", "string"}),
-            Map.entry("nivel", new String[] {"Lenguaje", "string"}),
-            Map.entry("nivelEsperado", new String[] {"RequerimientoDeCompetencia", "decimal"}),
+            Map.entry("nivelEsperado", new String[] {"RequerimientoDeCompetencia", "integer"}),
             Map.entry("esObligatorio", new String[] {"RequerimientoDeCompetencia", "boolean"}),
             Map.entry("ubicacion", new String[] {"OfertaLaboral", "string"}),
             Map.entry("modalidad", new String[] {"OfertaLaboral", "string"}),
@@ -270,7 +269,6 @@ class EmployabilityOntologyTest {
                 "4.0", org.apache.jena.datatypes.xsd.XSDDatatype.XSDdecimal));
         model.add(ranking, model.createProperty(NS + "escala"), model.createTypedLiteral(
                 competenceScale.getURI(), org.apache.jena.datatypes.xsd.XSDDatatype.XSDanyURI));
-        model.add(language, model.createProperty(NS + "nivel"), "B2");
         model.add(language, model.createProperty(NS + "escala"), model.createTypedLiteral(
                 languageScale.getURI(), org.apache.jena.datatypes.xsd.XSDDatatype.XSDanyURI));
         model.add(language, model.createProperty(NS + "nivelMCER"), model.createResource(NS + "nivelB2"));

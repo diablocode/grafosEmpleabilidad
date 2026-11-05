@@ -96,7 +96,7 @@ Construir la ontología y su integración con Apache Jena en capas pequeñas, ve
 - [x] Los niveles de lenguaje aceptados corresponden al MCER.
 - [x] Datos socioemocionales no reciben escalas o valores inventados.
 
-**Punto de revisión:** catálogos SKOS y enlaces desde rankings, lenguajes y recomendaciones verificados con pruebas. Revisar la interpretación de la escala propia 1–5 antes de definir reglas SHACL en la Capa 4.
+**Punto de revisión:** catálogos SKOS y enlaces desde rankings, lenguajes y recomendaciones verificados con pruebas; la escala ordinal propia se valida en la Capa 4.
 
 ### Capa 4 — Validación de datos con SHACL
 
@@ -111,12 +111,12 @@ Construir la ontología y su integración con Apache Jena en capas pequeñas, ve
 
 **Validación de salida**
 
-- [ ] Un conjunto válido de datos sintéticos pasa la validación.
-- [ ] Casos inválidos preparados para cada regla son rechazados o reportados con el mensaje esperado.
-- [ ] Los errores y advertencias pueden distinguirse.
-- [ ] No se marca como inválida la ausencia de información opcional o sensible que el PRD no obliga a registrar.
+- [x] Un conjunto válido de datos sintéticos pasa la validación.
+- [x] Casos inválidos para escalas, niveles y fechas son reportados como violaciones.
+- [x] Los errores y advertencias se distinguen por severidad; las advertencias no bloquean la aceptación.
+- [x] No se marca como inválida la ausencia de información opcional o sensible que el PRD no obliga a registrar.
 
-**Punto de revisión:** acordar qué reglas bloquean la carga antes de aplicarlas a datos de otros componentes.
+**Punto de revisión:** formas Turtle verificadas con Apache Jena SHACL. `EmployabilityDataValidator.hasBlockingViolations` distingue violaciones bloqueantes de advertencias, porque Jena puede devolver `conforms=false` cuando solo hay advertencias. Revisar los campos mínimos antes de aplicar las formas a datos externos.
 
 ### Capa 5 — Datos de ejemplo integrados
 

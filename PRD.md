@@ -115,12 +115,12 @@ Las propiedades de datos definidas para el esqueleto incluyen:
 | `fechaEvaluacion` | `RankingDeCompetencia` | `xsd:date` | Fecha de la evaluación. |
 | `vigenteHasta` | `Recomendacion` | `xsd:date` | Vigencia de la recomendación. |
 | `puntuacion`, `metodoEvaluacion` | `owl:Thing` | `xsd:decimal` o `xsd:string` según la propiedad | Resultado y método, interpretados con la escala indicada. |
-| `nivel` | `Lenguaje` | `xsd:string` | Nivel de dominio de lenguaje. |
+| `nivelMCER` | `Lenguaje` | `skos:Concept` | Nivel de lenguaje referenciado como concepto controlado A1–C2. |
 | `nivelEsperado`, `esObligatorio` | `RequerimientoDeCompetencia` | `xsd:decimal` o `xsd:boolean` según la propiedad | Nivel requerido y obligatoriedad. |
 | `ubicacion`, `modalidad`, `estadoOferta` | `OfertaLaboral` | `xsd:string` | Condiciones y estado de publicación. |
 | `accionRecomendada`, `versionModelo` | `Recomendacion` | `xsd:string` | Acción sugerida y versión del modelo. |
 
-Además, `nivelMCER` relaciona un `Lenguaje` con un concepto SKOS del catálogo MCER y `tipoRecomendacion` relaciona una `Recomendacion` con un concepto SKOS del catálogo de recomendaciones. La propiedad `escala` identifica con un literal `xsd:anyURI` la escala usada para interpretar puntuaciones y niveles.
+Además, `nivelMCER` relaciona un `Lenguaje` con un concepto SKOS del catálogo MCER y `tipoRecomendacion` relaciona una `Recomendacion` con un concepto SKOS del catálogo de recomendaciones. Los niveles se expresan mediante el concepto controlado, no como texto libre. La propiedad `escala` identifica con un literal `xsd:anyURI` la escala usada para interpretar puntuaciones y niveles.
 
 Las propiedades de metadatos compartidas no limitan su dominio a una clase específica; así se evita que varias declaraciones `rdfs:domain` impliquen una intersección accidental. Sus usos previstos se documentan a continuación. Las entidades pertinentes pueden incluir, cuando se conozca:
 
@@ -138,7 +138,13 @@ Los valores de puntuación deben estar normalizados a los valores 1, 2, 3, 4, 5,
 - La ontología debe utilizar OWL para declarar clases, propiedades, jerarquías y axiomas que tengan significado de dominio.
 - OWL opera bajo mundo abierto: la ausencia de un dato no significa que sea falso ni que una persona carezca de una competencia.
 - No declarar propiedades como funcionales, disjuntas o cardinalmente obligatorias salvo que la regla sea válida para todos los datos del dominio y esté justificada.
-- Las restricciones de calidad de datos (por ejemplo, campos requeridos para una oferta activa, rangos de puntuación o fechas coherentes) deben especificarse como requisitos de validación; podrán implementarse con SHACL en una fase posterior o junto con la ontología.
+- Las restricciones de calidad de datos se expresan con shapes SHACL y se ejecutan mediante Apache Jena. Los errores con severidad `sh:Violation` bloquean la aceptación; las advertencias `sh:Warning` se reportan sin bloquearla. Como Jena puede marcar `ValidationReport.conforms()` como falso aun cuando el único resultado sea una advertencia, la decisión de bloqueo debe basarse en la severidad de los resultados.
+- Validar que el candidato tenga exactamente un identificador opaco no vacío; los datos socioemocionales y las conexiones profesionales permanecen opcionales.
+- Validar puntuaciones ordinales enteras de 1 a 5 con escala, competencia, fecha, fuente y método; validar niveles esperados de requerimientos dentro del mismo rango.
+- Si se asigna un nivel de lenguaje, debe ser uno de los conceptos MCER A1–C2 y referenciar la escala MCER; se permite omitir el nivel. No se admiten niveles lingüísticos como literales libres.
+- Validar que ofertas tengan identificador, nombre y empleador; cuando se informen fechas, el inicio debe ser anterior o igual al fin. La ubicación ausente es una advertencia.
+- Validar que una trayectoria contenga al menos una etapa y que cada etapa esté vinculada a educación o experiencia laboral.
+- Validar que cada recomendación use un tipo controlado, registre fecha y versión del modelo, contenga explicación con evidencia y señale una oferta o una acción.
 - Separar afirmaciones declaradas, observadas, evaluadas e inferidas mediante procedencia, método o contexto.
 - Las equivalencias o inferencias sobre competencias y habilidades solo se incorporarán cuando exista una taxonomía o regla acordada; no deben suponerse equivalencias por similitud de etiquetas.
 

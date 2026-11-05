@@ -327,7 +327,7 @@ emp:puntuacion
     rdfs:label "puntuación"@es ;
     rdfs:comment "Valor numérico de una evaluación; debe interpretarse junto con su escala."@es ;
     rdfs:domain owl:Thing ;
-    rdfs:range <http://www.w3.org/2001/XMLSchema#decimal> .
+    rdfs:range <http://www.w3.org/2001/XMLSchema#integer> .
 
 emp:escala
     a owl:DatatypeProperty ;
@@ -343,19 +343,12 @@ emp:metodoEvaluacion
     rdfs:domain owl:Thing ;
     rdfs:range <http://www.w3.org/2001/XMLSchema#string> .
 
-emp:nivel
-    a owl:DatatypeProperty ;
-    rdfs:label "nivel"@es ;
-    rdfs:comment "Nivel de dominio de un lenguaje según una escala identificada."@es ;
-    rdfs:domain emp:Lenguaje ;
-    rdfs:range <http://www.w3.org/2001/XMLSchema#string> .
-
 emp:nivelEsperado
     a owl:DatatypeProperty ;
     rdfs:label "nivel esperado"@es ;
     rdfs:comment "Nivel requerido para una competencia en una oferta."@es ;
     rdfs:domain emp:RequerimientoDeCompetencia ;
-    rdfs:range <http://www.w3.org/2001/XMLSchema#decimal> .
+    rdfs:range <http://www.w3.org/2001/XMLSchema#integer> .
 
 emp:esObligatorio
     a owl:DatatypeProperty ;
